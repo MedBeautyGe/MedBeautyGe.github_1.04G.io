@@ -1,90 +1,95 @@
 <!DOCTYPE html>
-<html lang="ru" dir="ltr">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Med&Beauty.Ge - Medical Tourism Coordinator</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Med&Beauty.Ge - организация медицинского туризма в Грузии: лечение, пластическая хирургия, логистика, реабилитация.">
+  <meta name="keywords" content="медицинский туризм, пластическая хирургия, лечение в Грузии, реабилитация, ринопластика, логистика">
+  <meta property="og:title" content="Med&Beauty.Ge - Medical Tourism in Georgia">
+  <meta property="og:description" content="Организация лечения, трансфера и проживания в Грузии под ключ.">
+  <meta property="og:image" content="/images/logo-medbeauty.png">
+  <meta property="og:url" content="https://medbeautyge.github.io">
+  <title>Med&Beauty.Ge - Medical Tourism Coordinator</title>
+  <link rel="icon" href="./images/logo-medbeauty.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="lang-switcher">
-        <button onclick="changeLanguage('ru')">RU</button>
-        <button onclick="changeLanguage('en')">EN</button>
-        <button onclick="changeLanguage('de')">DE</button>
+  <div class="lang-switcher">
+    <button onclick="changeLanguage('ru')">RU</button>
+    <button onclick="changeLanguage('en')">EN</button>
+    <button onclick="changeLanguage('de')">DE</button>
+  </div>
+
+  <nav>
+    <img src="./images/logo-medbeauty.png" alt="Logo" class="logo">
+    <div class="slogan" data-translate="slogan"></div>
+    <ul>
+      <li><a href="#home" data-translate="home"></a></li>
+      <li><a href="#services" data-translate="services"></a></li>
+      <li><a href="#contact" data-translate="contact"></a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <h1 data-translate="heroTitle"></h1>
+      <p data-translate="heroSub"></p>
     </div>
+  </section>
 
-    <!-- Navigation & Slogan -->
-    <nav>
-        <img src="./images/logo-medbeauty.png" alt="Logo" class="logo">
-        <div class="slogan" data-translate="slogan">СОВЕРШЕНСТВО ДОСТУПНО</div>
-        <ul>
-            <li><a href="#home" data-translate="home">Главная</a></li>
-            <li><a href="#services" data-translate="services">Услуги</a></li>
-            <li><a href="#contact" data-translate="contact">Контакты</a></li>
-        </ul>
-    </nav>
+  <section id="services" class="services">
+    <h2 data-translate="ourServices" data-aos="fade-up"></h2>
+    <div class="service-container">
+      <div class="service-card" data-aos="zoom-in">
+        <img src="./images/service-travel.png" alt="Travel" class="service-img">
+        <h3 data-translate="travel"></h3>
+        <p data-translate="travelDesc"></p>
+      </div>
+      <div class="service-card" data-aos="zoom-in">
+        <img src="./images/service-rhinoplasty.png" alt="Rhinoplasty" class="service-img">
+        <h3 data-translate="rhino"></h3>
+        <p data-translate="rhinoDesc"></p>
+      </div>
+      <div class="service-card" data-aos="zoom-in">
+        <img src="./images/service-care.png" alt="Care" class="service-img">
+        <h3 data-translate="care"></h3>
+        <p data-translate="careDesc"></p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 data-translate="heroTitle">Ваш гид в мире медицины Грузии</h1>
-            <p data-translate="heroSub">Организация лечения, трансфера и проживания «под ключ»</p>
-        </div>
-    </section>
+  <section id="contact" class="contact" data-aos="fade-up">
+    <div class="contact-info">
+      <h2 data-translate="contactUs"></h2>
+      <p><i class="fas fa-envelope"></i> Medbeautyge@hotmail.com</p>
+      <p><i class="fas fa-phone"></i> +995 555 392 666</p>
+      <div class="social-links">
+        <a href="viber://chat?number=+995555392666" class="viber"><i class="fab fa-viber"></i></a>
+        <a href="https://wa.me/995555392666" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+    <form action="https://formspree.io/f/xrbqvoly" method="POST">
+      <input type="text" name="name" placeholder="Имя" data-translate="namePlaceholder" required>
+      <input type="email" name="email" placeholder="Email" data-translate="emailPlaceholder" required>
+      <textarea name="message" placeholder="Сообщение" data-translate="messagePlaceholder" required></textarea>
+      <button type="submit" data-translate="send"></button>
+    </form>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2 data-translate="ourServices">Наши услуги</h2>
-        <div class="service-container">
-            <div class="service-card">
-                <img src="./images/service-travel.png" alt="Travel" class="service-img">
-                <h3 data-translate="travel">Логистика</h3>
-                <p data-translate="travelDesc">Бронирование билетов и отелей</p>
-            </div>
-            <div class="service-card">
-                <img src="./images/service-rhinoplasty.png" alt="Rhinoplasty" class="service-img">
-                <h3 data-translate="rhino">Ринопластика</h3>
-                <p data-translate="rhinoDesc">Пластическая хирургия мирового уровня</p>
-            </div>
-            <div class="service-card">
-                <img src="./images/service-care.png" alt="Care" class="service-img">
-                <h3 data-translate="care">Реабилитация</h3>
-                <p data-translate="careDesc">Послеоперационный уход и поддержка</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-info">
-            <h2 data-translate="contactUs">Свяжитесь с нами</h2>
-            <p><i class="fas fa-envelope"></i> Medbeautyge@hotmail.com</p>
-            <p><i class="fas fa-phone"></i> +995 555 392 666</p>
-            <div class="social-links">
-                <a href="viber://chat?number=+995555392666" class="viber">
-                    <i class="fab fa-viber"></i>
-                </a>
-                <a href="https://wa.me/995555392666" class="whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="#" class="instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-            </div>
-        </div>
-        <form action="https://formspree.io/f/xrbqvoly" method="POST">
-            <input type="text" name="name" placeholder="Имя" data-translate="namePlaceholder" required>
-            <input type="email" name="email" placeholder="Email" data-translate="emailPlaceholder" required>
-            <textarea name="message" placeholder="Сообщение" data-translate="messagePlaceholder" required></textarea>
-            <button type="submit" data-translate="send">Отправить</button>
-        </form>
-    </section>
-
-    <script src="lang.js"></script>
+  <script src="lang.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </body>
 </html>
