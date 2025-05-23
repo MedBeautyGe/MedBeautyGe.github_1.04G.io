@@ -1,63 +1,90 @@
-
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MedBeauty - ваш координатор и проводник в сфере медицинских услуг в Грузии. Организуем лечение и процедуры для иностранных пациентов." data-en="MedBeauty - your coordinator and guide in medical services in Georgia. We arrange treatments and procedures for international patients." data-de="MedBeauty - Ihr Koordinator und Begleiter im Bereich medizinischer Dienstleistungen in Georgien. Wir organisieren Behandlungen und Verfahren für internationale Patienten.">
-    <meta name="keywords" content="пластическая хирургия, Грузия, медицинский туризм, MedBeauty">
-    <title data-ru="MedBeauty - Пластическая хирургия в Грузии" data-en="MedBeauty - Plastic Surgery in Georgia" data-de="MedBeauty - Plastische Chirurgie in Georgien">MedBeauty - Пластическая хирургия в Грузии</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Med&Beauty.Ge - Medical Tourism Coordinator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="images/logo-medbeauty.png" alt="MedBeauty Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#about" data-ru="О нас" data-en="About Us" data-de="Über uns">О нас</a></li>
-                    <li><a href="#services" data-ru="Услуги" data-en="Services" data-de="Leistungen">Услуги</a></li>
-                    <li><a href="#contact" data-ru="Контакты" data-en="Contact" data-de="Kontakt">Контакты</a></li>
-                </ul>
-            </nav>
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang="ru">RU</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="de">DE</button>
-            </div>
-        </div>
-    </header>
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button onclick="changeLanguage('ru')">RU</button>
+        <button onclick="changeLanguage('en')">EN</button>
+        <button onclick="changeLanguage('de')">DE</button>
+    </div>
 
-    <span class="slogan" data-ru="СОВЕРШЕНСТВО ДОСТУПНО" data-en="PERFECTION IS WITHIN REACH" data-de="PERFEKTION IST ERREICHBAR">СОВЕРШЕНСТВО ДОСТУПНО</span>
+    <!-- Navigation & Slogan -->
+    <nav>
+        <img src="./images/logo-medbeauty.png" alt="Logo" class="logo">
+        <div class="slogan" data-translate="slogan">СОВЕРШЕНСТВО ДОСТУПНО</div>
+        <ul>
+            <li><a href="#home" data-translate="home">Главная</a></li>
+            <li><a href="#services" data-translate="services">Услуги</a></li>
+            <li><a href="#contact" data-translate="contact">Контакты</a></li>
+        </ul>
+    </nav>
 
-    <section class="hero">
-        <div class="container">
-            <h1 data-ru="Ваша красота - наша забота" data-en="Your Beauty is Our Care" data-de="Ihre Schönheit ist unsere Sorge">Ваша красота - наша забота</h1>
-            <p data-ru="Мы организуем пластическую хирургию и медицинские процедуры в лучших клиниках Грузии для иностранных пациентов."
-               data-en="We arrange plastic surgery and medical procedures in the best clinics in Georgia for international patients."
-               data-de="Wir organisieren plastische Chirurgie und medizinische Verfahren in den besten Kliniken Georgiens für internationale Patienten.">
-                Мы организуем пластическую хирургию и медицинские процедуры в лучших клиниках Грузии для иностранных пациентов.
-            </p>
-            <a href="#contact" class="btn" data-ru="Оставить заявку" data-en="Get Started" data-de="Anfrage senden">Оставить заявку</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-translate="heroTitle">Ваш гид в мире медицины Грузии</h1>
+            <p data-translate="heroSub">Организация лечения, трансфера и проживания «под ключ»</p>
         </div>
     </section>
 
-    <!-- Остальная структура остается прежней -->
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 MedBeauty. <span data-ru="Все права защищены." data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">Все права защищены.</span></p>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 data-translate="ourServices">Наши услуги</h2>
+        <div class="service-container">
+            <div class="service-card">
+                <img src="./images/service-travel.png" alt="Travel" class="service-img">
+                <h3 data-translate="travel">Логистика</h3>
+                <p data-translate="travelDesc">Бронирование билетов и отелей</p>
+            </div>
+            <div class="service-card">
+                <img src="./images/service-rhinoplasty.png" alt="Rhinoplasty" class="service-img">
+                <h3 data-translate="rhino">Ринопластика</h3>
+                <p data-translate="rhinoDesc">Пластическая хирургия мирового уровня</p>
+            </div>
+            <div class="service-card">
+                <img src="./images/service-care.png" alt="Care" class="service-img">
+                <h3 data-translate="care">Реабилитация</h3>
+                <p data-translate="careDesc">Послеоперационный уход и поддержка</p>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-info">
+            <h2 data-translate="contactUs">Свяжитесь с нами</h2>
+            <p><i class="fas fa-envelope"></i> Medbeautyge@hotmail.com</p>
+            <p><i class="fas fa-phone"></i> +995 555 392 666</p>
+            <div class="social-links">
+                <a href="viber://chat?number=+995555392666" class="viber">
+                    <i class="fab fa-viber"></i>
+                </a>
+                <a href="https://wa.me/995555392666" class="whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" class="instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+        <form action="https://formspree.io/f/xrbqvoly" method="POST">
+            <input type="text" name="name" placeholder="Имя" data-translate="namePlaceholder" required>
+            <input type="email" name="email" placeholder="Email" data-translate="emailPlaceholder" required>
+            <textarea name="message" placeholder="Сообщение" data-translate="messagePlaceholder" required></textarea>
+            <button type="submit" data-translate="send">Отправить</button>
+        </form>
+    </section>
+
+    <script src="lang.js"></script>
 </body>
 </html>
