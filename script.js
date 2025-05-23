@@ -1,7 +1,8 @@
+
 // Переключение языков
 document.addEventListener('DOMContentLoaded', () => {
     const langButtons = document.querySelectorAll('.lang-btn');
-    const elements = document.querySelectorAll('[data-ru], [data-en]');
+    const elements = document.querySelectorAll('[data-ru], [data-en], [data-de]');
 
     langButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -26,6 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Обновляем заголовок страницы
             const title = document.querySelector('title');
             title.textContent = title.getAttribute(`data-${lang}`);
+
+            // Обновляем meta description
+            const metaDescription = document.querySelector('meta[name="description"]');
+            const newContent = metaDescription.getAttribute(`data-${lang}`);
+            if (newContent) {
+                metaDescription.setAttribute('content', newContent);
+            }
         });
     });
 });
