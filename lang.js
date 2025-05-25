@@ -52,8 +52,8 @@ const translations = {
     errorMessage: "Сообщение слишком короткое",
     sending: "Отправка...",
     success: "Спасибо! Мы свяжемся с вами в ближайшее время.",
-    mission: `Миссия<br>
-“Med&Beauty Georgia” (Med&Beauty.Ge) - это мы!<br>
+    missionIntro: `<strong>Миссия Med&Beauty.Ge: Совершенство доступно. Мы ваш надежный проводник к здоровью и красоте в Грузии.</strong><br><br>Мы сочетаем медицину европейского уровня с уникальным грузинским гостеприимством. Организуем все «под ключ» — от перелета до реабилитации, сотрудничая только с лучшими клиниками и специалистами. Наш приоритет — ваше комфортное, безопасное и выгодное пребывание, наполненное заботой и вниманием.`,
+    mission: `“Med&Beauty Georgia” (Med&Beauty.Ge) - это мы!<br>
 Мы ставим перед собой амбициозную задачу, — рассказать всему миру о Грузии не только как о Земле Гор, Вина и Моря. Но и о стране, с отличной и доступной медициной, эстетическими и бьюти услугами.<br>
 Мы поддерживаем ваше стремление к здоровью и красоте — и сделаем и процесс и результат вашего путешествия безупречным опытом. Вы будете чувствовать себя в надежных руках от начала до конца.<br>
 Наша команда может составить любой кейс, включая: перелет, мед. страхование, размещение, медицинские, эстетические, туристические услуги, транспортные и консьерж услуги.<br>
@@ -64,7 +64,9 @@ const translations = {
 С нами вам будет комфортно, безопасно и выгодно, а кроме того, — познавательно, душевно и вкусно!<br>
 Ведь вы едете в Грузию!<br>
 Для нас работа — это не просто турбизнес. Мы хотим, чтобы каждый гость получил не только выгодные и качественные услуги, но уезжал в свою страну, как зернышко граната, — был наполнен солнцем Грузии и теплом людей, которые здесь живут и работают.<br>
-Потому что это — Грузия, а Гость в Грузии — это подарок от Бога!`
+Потому что это — Грузия, а Гость в Грузии — это подарок от Бога!`,
+    readMoreAbout: "Читать полностью",
+    readLessAbout: "Скрыть"
   },
   en: {
     home: "Home",
@@ -116,8 +118,8 @@ const translations = {
     errorMessage: "Message is too short",
     sending: "Sending...",
     success: "Thank you! We will contact you soon.",
-    mission: `Mission<br>
-“Med&Beauty Georgia” (Med&Beauty.Ge) is us!<br>
+    missionIntro: `<strong>Med&Beauty.Ge Mission: Perfection is available. We are your reliable guide to health and beauty in Georgia.</strong><br><br>We combine European-level medicine with unique Georgian hospitality. We organize everything "turnkey" – from flights to rehabilitation, cooperating only with the best clinics and specialists. Our priority is your comfortable, safe, and beneficial stay, filled with care and attention.`,
+    mission: `“Med&Beauty Georgia” (Med&Beauty.Ge) is us!<br>
 Our ambitious goal is to tell the world about Georgia not only as a land of mountains, wine, and sea, but also as a country with excellent and affordable healthcare, aesthetics, and beauty services.<br>
 We support your desire for health and beauty—and will make both the process and the result of your trip a perfect experience. You will feel in safe hands from start to finish.<br>
 Our team can assemble any case, including: flight, medical insurance, accommodation, medical, aesthetic, tourist, transport and concierge services.<br>
@@ -128,7 +130,9 @@ Our main priorities are to organize guests high-quality medical and aesthetic se
 With us, you will be comfortable, safe, and profitable, and in addition—enlightened, soulful, and well-fed!<br>
 Because you are going to Georgia!<br>
 For us, work is not just a tourism business. We want every guest not only to receive favorable and high-quality services, but to leave Georgia filled with its sun and the warmth of its people.<br>
-Because this is Georgia, and a guest in Georgia is a gift from God!`
+Because this is Georgia, and a guest in Georgia is a gift from God!`,
+    readMoreAbout: "Read More",
+    readLessAbout: "Read Less"
   },
   de: {
     home: "Startseite",
@@ -180,8 +184,8 @@ Because this is Georgia, and a guest in Georgia is a gift from God!`
     errorMessage: "Nachricht ist zu kurz",
     sending: "Senden...",
     success: "Vielen Dank! Wir melden uns bald.",
-    mission: `Mission<br>
-„Med&Beauty Georgia“ (Med&Beauty.Ge) – das sind wir!<br>
+    missionIntro: `<strong>Mission Med&Beauty.Ge: Perfektion ist erreichbar. Wir sind Ihr zuverlässiger Führer zu Gesundheit und Schönheit in Georgien.</strong><br><br>Wir verbinden Medizin auf europäischem Niveau mit einzigartiger georgischer Gastfreundschaft. Wir organisieren alles „schlüsselfertig“ – von Flügen bis zur Rehabilitation, in Zusammenarbeit nur mit den besten Kliniken und Spezialisten. Unsere Priorität ist Ihr komfortabler, sicherer und vorteilhafter Aufenthalt, erfüllt von Sorgfalt und Aufmerksamkeit.`,
+    mission: `„Med&Beauty Georgia“ (Med&Beauty.Ge) – das sind wir!<br>
 Unser Ziel ist es, der Welt nicht nur Georgien als Land der Berge, des Weins und des Meeres vorzustellen, sondern auch als Land mit ausgezeichneter und erschwinglicher Medizin, Ästhetik und Beauty-Dienstleistungen.<br>
 Wir unterstützen Ihr Streben nach Gesundheit und Schönheit – und machen sowohl den Prozess als auch das Ergebnis Ihrer Reise zu einem perfekten Erlebnis. Sie werden sich von Anfang bis Ende in sicheren Händen fühlen.<br>
 Unser Team stellt jeden Fall individuell zusammen, inkl. Flug, Krankenversicherung, Unterkunft, medizinische, ästhetische, touristische, Transport- und Concierge-Leistungen.<br>
@@ -192,38 +196,92 @@ Unsere Hauptprioritäten sind: medizinische und ästhetische Leistungen höchste
 Mit uns wird Ihre Reise komfortabel, sicher und lohnend – außerdem lehrreich, herzlich und köstlich!<br>
 Sie reisen nach Georgien!<br>
 Für uns ist es nicht nur Tourismus. Wir möchten, dass jeder Gast nicht nur hochwertige und günstige Leistungen erhält, sondern mit Sonne und Wärme Georgiens abreist.<br>
-Denn das ist Georgien, und der Gast in Georgien ist ein Geschenk Gottes!`
+Denn das ist Georgien, und der Gast in Georgien ist ein Geschenk Gottes!`,
+    readMoreAbout: "Mehr lesen",
+    readLessAbout: "Weniger anzeigen"
   }
 };
 
-window.translations = translations;
+window.translations = translations; // Make translations globally available
 
-document.addEventListener('DOMContentLoaded', () => {
-  const lang = localStorage.getItem('lang') || 'ru';
-  changeLanguage(lang);
-  if (typeof AOS !== "undefined") AOS.init();
-});
+function applyTranslations(lang) {
+    document.documentElement.setAttribute('lang', lang);
+
+    document.querySelectorAll('.lang-switcher button').forEach(btn => {
+        btn.classList.remove('active');
+        // Check aria-label for languages like Русский, English, Deutsch or textContent for RU, EN, DE
+        if ( (lang === 'ru' && btn.textContent === 'RU') ||
+             (lang === 'en' && btn.textContent === 'EN') ||
+             (lang === 'de' && btn.textContent === 'DE') ) {
+             btn.classList.add('active');
+        }
+    });
+    
+    const currentTranslations = translations[lang];
+    if (!currentTranslations) {
+        console.error(`No translations found for language: ${lang}`);
+        return;
+    }
+
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const translation = currentTranslations[key];
+
+        if (translation !== undefined) {
+            if (element.tagName === 'INPUT' && element.type !== 'submit' && element.type !== 'button') {
+                element.placeholder = translation;
+                // Also update sr-only label associated with this input if its data-translate matches
+                const label = document.querySelector(`label.sr-only[for="${element.id}"][data-translate="${key}"]`);
+                if (label) {
+                    // label.textContent = translation; // Not needed as placeholder covers visible text, sr-only is for screen readers
+                }
+            } else if (element.tagName === 'TEXTAREA') {
+                element.placeholder = translation;
+                 const label = document.querySelector(`label.sr-only[for="${element.id}"][data-translate="${key}"]`);
+                if (label) {
+                    // label.textContent = translation;
+                }
+            } else if (element.tagName === 'BUTTON' && element.classList.contains('submit-btn')) {
+                // For submit button, update both innerHTML and aria-label
+                element.innerHTML = translation.replace(/<span class="spinner"><\/span> /g, ''); // Remove spinner if present from translation string
+                element.setAttribute('aria-label', translation.replace(/<[^>]*>/g, '')); // Remove HTML for aria-label
+            } else if (element.classList.contains('sr-only') && element.tagName === 'LABEL') {
+                // For sr-only labels, we generally want them to match placeholder text for screen readers
+                // The placeholder itself will be translated. We could update textContent if it's purely for screen readers and has no visible counterpart.
+                // element.textContent = translation; // This might be redundant if the input's placeholder is already translated
+            }
+             else { // This will also handle .read-more-btn and other elements
+                element.innerHTML = translation;
+            }
+        } else {
+            // console.warn(`No translation found for key: ${key} in language: ${lang}`);
+        }
+    });
+}
+
 
 function changeLanguage(lang) {
   localStorage.setItem('lang', lang);
-  document.documentElement.setAttribute('lang', lang);
-
-  document.querySelectorAll('.lang-switcher button').forEach(btn => {
-    btn.classList.remove('active');
-    if (btn.textContent === lang.toUpperCase()) {
-      btn.classList.add('active');
+  applyTranslations(lang);
+  
+  // Explicitly update the read-more button text if it exists
+  const readMoreBtn = document.querySelector('.read-more-btn');
+  if (readMoreBtn) {
+    const currentKey = readMoreBtn.getAttribute('data-translate');
+    if (translations[lang] && translations[lang][currentKey]) {
+        readMoreBtn.textContent = translations[lang][currentKey];
     }
-  });
-
-  document.querySelectorAll('[data-translate]').forEach(element => {
-    const key = element.getAttribute('data-translate');
-    const translation = translations[lang][key];
-    if (translation) {
-      if (element.placeholder !== undefined) {
-        element.placeholder = translation;
-      } else {
-        element.innerHTML = translation;
-      }
-    }
-  });
+  }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLang = localStorage.getItem('lang') || 'ru'; // Default to 'ru'
+  applyTranslations(savedLang);
+
+  if (typeof AOS !== "undefined") {
+    AOS.init({
+      duration: 800,
+      once: true 
+    });
+  }
+});

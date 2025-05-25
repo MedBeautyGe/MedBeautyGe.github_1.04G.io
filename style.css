@@ -1,6 +1,10 @@
 :root {
   --primary-color: #1B8F8F;
   --dark-accent: #0B4A4A;
+  --text-color: #2A2A2A;
+  --light-bg: #f8f8f8;
+  --white-color: #fff;
+  --border-color: #e0e0e0;
 }
 
 * {
@@ -12,17 +16,21 @@
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
-  background: #fff;
-  color: #2A2A2A;
+  background: var(--white-color);
+  color: var(--text-color);
   position: relative;
+  overflow-x: hidden; /* Предотвращает горизонтальный скролл, если что-то вылезет */
 }
 
+body.menu-open {
+  overflow-y: hidden; /* Блокирует скролл основной страницы при открытом меню */
+}
 body.menu-open::after {
   content: '';
   position: fixed;
   left: 0; top: 0;
   width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.5); /* Немного темнее для лучшего контраста */
   z-index: 998;
   pointer-events: all;
 }
@@ -30,36 +38,37 @@ body.menu-open::after {
 .lang-switcher {
   text-align: right;
   padding: 10px 5%;
-  background: #f8f8f8;
+  background: var(--light-bg);
 }
 
 .lang-switcher button {
-  padding: 8px 20px;
-  margin: 0 5px;
+  padding: 8px 15px; /* Немного компактнее */
+  margin: 0 3px; /* Уменьшил отступ */
   border: 2px solid var(--dark-accent);
-  background: #fff;
+  background: var(--white-color);
   cursor: pointer;
   border-radius: 25px;
   font-weight: 600;
-  transition: all 0.3s;
+  transition: all 0.3s ease; /* Добавил ease */
 }
 
-.lang-switcher button.active {
+.lang-switcher button.active,
+.lang-switcher button:hover {
   background: var(--dark-accent);
-  color: white;
+  color: var(--white-color);
   border-color: var(--dark-accent);
 }
 
 .sticky-nav {
   position: sticky;
   top: 0;
-  z-index: 999;
-  background: #ffffff;
+  z-index: 1000; /* Увеличил z-index на всякий случай */
+  background: var(--white-color);
   box-shadow: 0 2px 8px rgba(11, 74, 74, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%;
+  padding: 0.8rem 5%; /* Немного уменьшил вертикальный padding */
   flex-wrap: wrap;
 }
 
@@ -67,375 +76,560 @@ body.menu-open::after {
   display: none;
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 28px; /* Немного увеличил для лучшей кликабельности */
   cursor: pointer;
   color: var(--dark-accent);
-  z-index: 1001;
+  z-index: 1002; /* Выше чем nav-list */
+  padding: 5px; /* Добавил padding для увеличения области клика */
 }
 
 .burger-icon, .close-icon {
-  font-size: 32px;
+  font-size: 30px; /* Уменьшил, чтобы соответствовать кнопке */
   line-height: 1;
   pointer-events: none;
   user-select: none;
+  display: inline-block; /* Для корректного отображения */
 }
 
 .logo {
-  height: 60px;
+  height: 50px; /* Уменьшил немного */
   width: auto;
-  max-width: 200px;
-  transition: transform 0.3s;
+  max-width: 180px; /* Уменьшил немного */
+  transition: transform 0.3s ease;
 }
 .logo:hover,
 .logo:focus {
-  transform: scale(1.07);
+  transform: scale(1.05); /* Уменьшил эффект */
 }
 
 .slogan {
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Немного уменьшил */
   font-weight: 600;
   text-transform: uppercase;
   color: var(--primary-color);
   text-align: center;
-  width: 100%;
-  margin: 10px 0;
+  width: 100%; /* Для корректного расположения при переносе */
+  margin: 8px 0; /* Уменьшил отступы */
+  order: 1; /* По умолчанию */
 }
 
 .nav-list {
   display: flex;
-  gap: 2rem;
+  gap: 1.8rem; /* Немного уменьшил */
   list-style: none;
+  align-items: center; /* Для выравнивания, если высота элементов разная */
 }
 
 .nav-list a {
   text-decoration: none;
-  color: #2A2A2A;
+  color: var(--text-color);
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
+  padding: 5px 0; /* Для лучшего восприятия кликабельной области */
+  position: relative;
+}
+.nav-list a::after { /* Эффект подчеркивания при наведении */
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
 }
 
-.nav-list a:hover {
+.nav-list a:hover,
+.nav-list a:focus, /* Добавил :focus для доступности */
+.nav-list a.active-link { /* Для активной ссылки (если будет JS логика) */
   color: var(--primary-color);
 }
+.nav-list a:hover::after,
+.nav-list a:focus::after,
+.nav-list a.active-link::after {
+  width: 100%;
+}
+
 
 @keyframes slideInMenu {
-  from { transform: translateY(-40px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from { transform: translateX(-100%); opacity: 0; } /* Изменил на translateX */
+  to { transform: translateX(0); opacity: 1; }
 }
 .nav-list.slide-in {
-  animation: slideInMenu 0.35s cubic-bezier(.6,-0.28,.74,.05) forwards;
+  animation: slideInMenu 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .advantages-list {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0 0.5rem 0;
+  gap: 1.5rem; /* Уменьшил */
+  margin: 1.8rem 0 0.5rem 0; /* Уменьшил верхний отступ */
   list-style: none;
   flex-wrap: wrap;
 }
 .advantages-list li {
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Уменьшил */
   font-weight: 500;
-  color: #fff;
+  color: var(--white-color);
   gap: 0.5em;
-  background: rgba(27, 143, 143, 0.2);
-  padding: 0.7em 1.4em;
+  background: rgba(27, 143, 143, 0.25); /* Чуть насыщеннее */
+  padding: 0.6em 1.2em; /* Уменьшил */
   border-radius: 18px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Легкая тень */
 }
 .advantages-list i {
-  color: #fff;
-  font-size: 1.2em;
+  color: var(--white-color);
+  font-size: 1.1em; /* Уменьшил */
 }
 
 .hero {
   background: linear-gradient(135deg, var(--dark-accent), var(--primary-color));
-  padding: 6rem 5% 4rem 5%;
+  padding: 5rem 5% 3.5rem 5%; /* Уменьшил вертикальные отступы */
   text-align: center;
-  color: #fff;
+  color: var(--white-color);
+  position: relative; /* Для возможных псевдоэлементов */
 }
 
 .hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.2rem; /* Уменьшил */
+  margin-bottom: 1.2rem; /* Уменьшил */
+  font-weight: 600;
 }
 
 .hero-content p {
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Уменьшил */
   opacity: 0.9;
+  max-width: 700px; /* Ограничил ширину для лучшей читаемости */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cta-btn {
   display: inline-block;
-  margin-top: 2rem;
-  padding: 16px 40px;
-  font-size: 1.1rem;
+  margin-top: 1.8rem; /* Уменьшил */
+  padding: 14px 35px; /* Уменьшил */
+  font-size: 1rem; /* Уменьшил */
   font-weight: 600;
-  color: #fff;
+  color: var(--white-color);
   background: linear-gradient(90deg, var(--primary-color) 0%, var(--dark-accent) 100%);
   border: none;
   border-radius: 32px;
-  box-shadow: 0 4px 16px rgba(27, 143, 143, 0.2);
+  box-shadow: 0 4px 12px rgba(11, 74, 74, 0.25); /* Усилил тень */
   text-decoration: none;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Добавил ease и тень */
 }
-.cta-btn:hover {
-  transform: translateY(-2px) scale(1.03);
-}
-
-.services {
-  padding: 5rem 5%;
-  background: #f8f8f8;
+.cta-btn:hover,
+.cta-btn:focus { /* Добавил :focus */
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(11, 74, 74, 0.3);
 }
 
-.services h2 {
+section { /* Общий стиль для секций */
+  padding: 4rem 5%; /* Стандартизировал отступы */
+}
+
+section h2 { /* Общий стиль для заголовков секций */
   text-align: center;
-  margin-bottom: 3rem;
-  font-size: 2.2rem;
+  margin-bottom: 2.5rem; /* Уменьшил */
+  font-size: 2rem; /* Уменьшил */
   background: linear-gradient(90deg, var(--dark-accent), var(--primary-color));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  font-weight: 600;
+}
+
+
+.services {
+  background: var(--light-bg);
 }
 
 .service-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Уменьшил minmax */
+  gap: 2rem; /* Уменьшил */
 }
 
 .service-card {
-  background: #fff;
-  padding: 2rem;
+  background: var(--white-color);
+  padding: 1.8rem; /* Уменьшил */
   border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(11, 74, 74, 0.1);
-  transition: transform 0.3s;
+  box-shadow: 0 6px 20px rgba(11, 74, 74, 0.08); /* Уменьшил интенсивность тени */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex; /* Для выравнивания контента по высоте */
+  flex-direction: column;
+  text-align: center;
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px); /* Уменьшил сдвиг */
+  box-shadow: 0 10px 25px rgba(11, 74, 74, 0.12);
 }
 
 .service-img {
   width: 100%;
-  max-width: 180px;
+  max-width: 120px; /* Уменьшил */
   height: auto;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 1.2rem; /* Уменьшил */
 }
+.service-card h3 {
+  font-size: 1.3rem;
+  color: var(--dark-accent);
+  margin-bottom: 0.8rem;
+}
+.service-card p {
+  font-size: 0.95rem;
+  color: #555;
+  flex-grow: 1; /* Чтобы карточки были одинаковой высоты */
+}
+
 
 .contact {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  padding: 5rem 5%;
-  background: #fff;
+  grid-template-columns: 1fr 1.2fr; /* Немного изменил пропорции */
+  gap: 3rem; /* Уменьшил */
+  background: var(--white-color);
 }
 
 .contact-info h2 {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
+  font-size: 1.8rem; /* Уменьшил */
+  color: var(--dark-accent);
+  text-align: left; /* Выровнял по левому краю */
+  background: none; /* Убрал градиент для этого заголовка */
+  -webkit-background-clip: unset;
+  background-clip: unset;
 }
 .contact-info p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem; /* Увеличил */
+  font-size: 1rem;
+  display: flex; /* Для выравнивания иконок */
+  align-items: center;
+}
+.contact-info p i {
+  margin-right: 10px;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  width: 20px; /* Фиксированная ширина для иконки */
+  text-align: center;
 }
 .contact-info a {
   color: var(--primary-color);
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.contact-info a:hover {
+  color: var(--dark-accent);
+  text-decoration: underline;
 }
 .or-message {
-  margin-top: 1rem;
+  margin-top: 1.5rem; /* Увеличил */
   font-weight: 500;
+  font-size: 1rem;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem; /* Уменьшил */
   position: relative;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  font-size: 16px;
-  padding: 15px 20px 15px 45px;
-  border: 2px solid #e0e0e0;
+  font-size: 1rem; /* Стандартизировал */
+  padding: 12px 18px 12px 45px; /* Уменьшил padding */
+  border: 1px solid var(--border-color); /* Сделал тоньше */
   border-radius: 8px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  background-color: #fcfcfc; /* Легкий фон для полей */
 }
-
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 8px rgba(27, 143, 143, 0.2);
+  box-shadow: 0 0 0 3px rgba(27, 143, 143, 0.15); /* Изменил эффект фокуса */
+  background-color: var(--white-color);
 }
 
 .form-group i {
   position: absolute;
   left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
+  top: 15px; /* Выровнял по верхнему краю padding */
+  transform: translateY(0); /* Убрал transform, т.к. выравниваем по padding */
+  font-size: 1.1rem; /* Уменьшил */
   color: var(--primary-color);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
+.form-group input:focus + i, /* Не сработает, т.к. i перед input */
+.form-group textarea:focus + i { /* Нужно будет JS или перестановка i после input */
+  /* opacity: 1; */ /* Для этого иконка должна быть после поля ввода, либо JS */
+}
+.form-group input:focus ~ i, /* Если иконка после поля ввода */
+.form-group textarea:focus ~ i {
+    opacity: 1;
+}
+
 
 .submit-btn {
   width: 100%;
-  padding: 16px;
-  font-size: 18px;
+  padding: 14px; /* Уменьшил */
+  font-size: 1.05rem; /* Уменьшил */
   background: linear-gradient(90deg, var(--primary-color) 0%, var(--dark-accent) 100%);
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 4px 16px rgba(27, 143, 143, 0.13);
-  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(27, 143, 143, 0.15);
+  transition: all 0.3s ease;
+  display: flex; /* для спиннера */
+  align-items: center;
+  justify-content: center;
 }
 
-.submit-btn:hover {
-  background: var(--dark-accent);
-  transform: translateY(-2px) scale(1.03);
+.submit-btn:hover:not(:disabled), /* добавил :not(:disabled) */
+.submit-btn:focus:not(:disabled) {
+  background: linear-gradient(90deg, var(--dark-accent) 0%, var(--primary-color) 100%); /* Инверсия градиента */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(27, 143, 143, 0.25);
 }
+.submit-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
 
 .form-success-message {
   text-align: center;
   color: var(--primary-color);
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-top: 1.5rem;
+  font-size: 1.05rem; /* Уменьшил */
+  margin-top: 1.2rem; /* Уменьшил */
+  padding: 10px;
+  background-color: #e6f4f4;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 4px;
 }
 
 .social-links {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Сделал адаптивным */
+  gap: 0.8rem; /* Уменьшил */
+  margin-top: 1.5rem; /* Уменьшил */
 }
 
 .social-links a {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
+  gap: 8px; /* Уменьшил */
+  padding: 10px 15px; /* Уменьшил */
   border-radius: 8px;
-  color: white !important;
+  color: var(--white-color) !important;
   text-decoration: none;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  font-size: 0.9rem; /* Уменьшил шрифт */
 }
 
 .social-links a:hover {
-  transform: translateY(-3px) scale(1.04);
+  transform: translateY(-3px) scale(1.03); /* Уменьшил scale */
+  opacity: 0.9;
 }
 
 .social-links a i {
-  font-size: 24px;
+  font-size: 1.3rem; /* Уменьшил */
+  width: 20px;
+  text-align: center;
 }
 
 .social-links .whatsapp { background: #25D366; }
 .social-links .telegram { background: #229ED9; }
 .social-links .instagram { 
-  background: linear-gradient(45deg, #833AB4, #E1306C, #FCAF45);
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); /* Обновленный градиент */
 }
 .social-links .facebook { background: #1877F2; }
 
 .sr-only {
   position: absolute !important;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
+  width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important; /* Добавлено для некоторых скринридеров */
+  border: 0 !important;
 }
+
 
 @media (max-width: 1000px) {
   .logo {
-    max-width: 140px;
-    height: 46px;
+    max-width: 160px; /* Увеличил немного для этого разрешения */
+    height: 45px;
   }
   .advantages-list {
     gap: 1rem;
-    font-size: 1rem;
+  }
+  .advantages-list li {
+    font-size: 0.95rem;
+  }
+   .contact {
+    grid-template-columns: 1fr; /* В один столбец раньше */
   }
 }
 
 @media (max-width: 768px) {
+  .sticky-nav {
+    padding: 0.7rem 5%;
+  }
   .menu-toggle {
     display: block;
-    position: relative;
-    z-index: 1002;
   }
   .nav-list {
-    display: none;
-    width: 100%;
+    display: none; /* Управляется JS */
+    position: fixed; /* Изменил на fixed для полного экрана */
+    left: 0; 
+    top: 0; /* От самого верха */
+    width: 80%; /* Ширина меню */
+    max-width: 300px; /* Максимальная ширина */
+    height: 100vh; /* На всю высоту */
     flex-direction: column;
-    gap: 1rem;
-    padding: 2rem 0;
-    background: #fff;
-    position: absolute;
-    left: 0; top: 100%;
+    gap: 0.5rem; /* Уменьшил отступ */
+    padding: 5rem 2rem 2rem; /* Отступы внутри меню */
+    background: var(--white-color);
     z-index: 1001;
-    box-shadow: 0 10px 20px rgba(11, 74, 74, 0.12);
+    box-shadow: 5px 0 15px rgba(11, 74, 74, 0.15);
+    overflow-y: auto; /* Если ссылок много */
   }
   .nav-list.active {
     display: flex;
   }
+  .nav-list a {
+    font-size: 1.1rem; /* Крупнее для мобильных */
+    padding: 10px 0;
+    display: block; /* Чтобы занимали всю ширину */
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .nav-list a::after {
+      display: none; /* Убираем подчеркивание в моб. меню */
+  }
+  .nav-list li:last-child a {
+      border-bottom: none;
+  }
+
   .logo {
-    max-width: 120px;
-    height: 40px;
+    max-width: 140px; /* Уменьшил для мобильных */
+    height: 40px; 
   }
   .slogan {
-    order: 2;
-    width: 100%;
-    margin: 10px auto;
-    font-size: 1.1rem;
+    order: -1; /* Логотип и кнопка меню, потом слоган */
+    width: auto; /* Чтобы не занимал всю ширину */
+    margin: 0;
+    flex-grow: 1; /* Занимает доступное пространство */
+    text-align: left;
+    padding-left: 15px;
+    font-size: 0.9rem;
   }
+   .sticky-nav {
+    justify-content: space-between; /* Для правильного расположения лого, слогана, кнопки */
+    flex-wrap: nowrap; /* Предотвращаем перенос слогана */
+  }
+  .logo-slogan-wrapper { /* Обертка для лого и слогана, если нужно */
+      display: flex;
+      align-items: center;
+  }
+
+
   .service-container {
     grid-template-columns: 1fr;
   }
   .contact {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem; /* Уменьшил */
     padding: 3rem 5%;
   }
   .hero {
-    padding: 4rem 5% 2rem 5%;
+    padding: 4rem 5% 2.5rem 5%;
+  }
+   .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
   }
   .advantages-list {
     flex-direction: column;
-    gap: 0.7rem;
+    align-items: center; /* Центрируем элементы */
+    gap: 0.8rem;
   }
   .social-links {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Одна колонка */
+  }
+  section {
+      padding: 3rem 5%;
+  }
+  section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
   }
 }
 
 @media (max-width: 480px) {
   .lang-switcher button {
-    padding: 6px 15px;
-    font-size: 15px;
+    padding: 6px 12px;
+    font-size: 14px;
   }
   .form-group input,
   .form-group textarea {
-    font-size: 16px;
-    padding: 14px 18px 14px 46px;
+    font-size: 0.95rem;
+    padding: 12px 15px 12px 40px;
+  }
+   .form-group i {
+    left: 12px;
+    top: 13px;
+    font-size: 1rem;
   }
   .logo {
     max-width: 120px;
-    height: 40px;
+    height: 35px;
+  }
+   .slogan {
+    display: none; /* Скрываем слоган на очень маленьких экранах для экономии места */
   }
   .submit-btn {
-    min-height: 48px;
-    font-size: 17px;
-  }
-  .slogan {
-    font-size: 1.1rem;
+    padding: 12px;
+    font-size: 1rem;
   }
   .hero-content h1 {
-    font-size: 1.3rem;
+    font-size: 1.6rem; /* Еще меньше */
+  }
+   .hero-content p {
+    font-size: 0.9rem;
+  }
+  .cta-btn {
+    padding: 12px 30px;
+    font-size: 0.95rem;
+  }
+  .advantages-list li {
+      padding: 0.5em 1em;
+      font-size: 0.9rem;
+  }
+  .service-card {
+      padding: 1.5rem;
+  }
+  .contact-info h2 {
+      font-size: 1.6rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
   .logo:hover,
   .logo:focus,
   .cta-btn:hover,
@@ -443,7 +637,6 @@ body.menu-open::after {
   .submit-btn:hover,
   .social-links a:hover {
     transform: none !important;
-    transition: none !important;
   }
   .nav-list.slide-in {
     animation: none !important;
@@ -452,155 +645,209 @@ body.menu-open::after {
 
 .spinner {
   display: inline-block;
-  width: 22px; height: 22px;
-  border: 3px solid #b2dfdb;
-  border-top: 3px solid #1B8F8F;
+  width: 20px; height: 20px; /* Уменьшил */
+  border: 3px solid rgba(255,255,255,0.3); /* Цвет для фона спиннера на кнопке */
+  border-top-color: var(--white-color); /* Цвет активной части спиннера */
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
   margin-right: 8px;
 }
+.submit-btn .spinner { /* Специфичный стиль для спиннера на кнопке */
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top-color: var(--white-color);
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-.input-error {
+#form-loading { /* Если этот блок еще используется */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#form-loading .spinner { /* Спиннер для отдельного блока загрузки */
+    border: 3px solid #b2dfdb;
+    border-top-color: var(--primary-color);
+}
+
+
+.input-error { /* Стиль для ошибок валидации (если будет JS валидация) */
   color: #e53935;
-  margin-top: 6px;
-  font-size: 0.95em;
+  margin-top: 5px;
+  font-size: 0.9em;
+  display: block; /* Чтобы занимал свою строку */
 }
 
 /* --- О НАС и ОТЗЫВЫ --- */
-.about-section, .reviews-section {
-  padding: 5rem 5%;
-  background: #f8f8f8;
-  text-align: center;
-}
-.about-section h2,
-.reviews-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
-  background: linear-gradient(90deg, var(--dark-accent), var(--primary-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.about-section { /* Убрал .reviews-section, т.к. у него фон другой */
+  background: var(--light-bg);
 }
 .reviews-section {
-  background: #fff;
+  background: var(--white-color);
 }
 .mission-text {
-  max-width: 900px;
+  max-width: 850px; /* Немного уменьшил */
   margin: 0 auto;
-  font-size: 1.13rem;
-  line-height: 1.7;
-  color: #222;
-  background: #fff;
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(11,74,74,0.07);
+  font-size: 1.05rem; /* Немного уменьшил */
+  line-height: 1.75; /* Увеличил для лучшей читаемости */
+  color: #333; /* Чуть темнее */
+  background: var(--white-color);
+  padding: 2rem; /* Уменьшил */
+  border-radius: 15px; /* Согласовал с другими карточками */
+  box-shadow: 0 8px 25px rgba(11,74,74,0.07);
   text-align: left;
 }
-.mission-text br {
-  line-height: 2;
+.mission-text strong {
+    color: var(--dark-accent);
+    font-weight: 600;
 }
-@media (max-width: 768px) {
-  .about-section, .reviews-section {
-    padding: 3rem 5%;
-  }
-  .mission-text {
-    padding: 1.5rem 1rem;
-    font-size: 1rem;
-  }
+.mission-text div[data-translate="missionIntro"] {
+    margin-bottom: 0; /* Изменено, т.к. разделитель и кнопка идут следом */
 }
+.mission-text div[data-translate="mission"] { /* Это теперь .mission-full-text */
+    margin-top: 1rem; /* Отступ перед полным текстом, если он отображается */
+}
+
+.mission-separator {
+  margin: 1.5rem auto; /* Уменьшил отступы */
+  border: none;
+  border-top: 1px solid var(--border-color); 
+  width: 70%; /* Уменьшил */
+}
+
+/* Стили для кнопки "Читать полностью" и раскрывающегося текста */
+.read-more-btn {
+  display: inline-block;
+  margin-top: 1rem; /* Отступ сверху от разделителя */
+  margin-bottom: 1rem; /* Отступ снизу, если текст свернут */
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.read-more-btn:hover,
+.read-more-btn:focus {
+  background-color: var(--dark-accent);
+  transform: translateY(-2px);
+}
+
+.mission-full-text {
+  /* display: none; устанавливается инлайново в HTML и JS */
+  margin-top: 1rem; /* Отступ между кнопкой и полным текстом, когда он показан */
+  /* Стили текста (размер шрифта, межстрочный интервал, цвет) наследуются от .mission-text */
+}
+
 
 /* ====== ДОБАВЛЕННЫЕ НОВЫЕ СЕКЦИИ ====== */
 
 /* Блок "Как мы работаем" */
 .howwework-section {
-  padding: 5rem 5%;
-  background: #fff;
-  text-align: center;
-}
-.howwework-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
-  background: linear-gradient(90deg, var(--dark-accent), var(--primary-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  background: var(--white-color);
 }
 .howwework-list {
   text-align: left;
-  max-width: 750px;
-  margin: 0 auto 2rem auto;
-  font-size: 1.13rem;
-  padding-left: 1.4rem;
+  max-width: 700px; /* Уменьшил */
+  margin: 0 auto 2.5rem auto; /* Увеличил нижний отступ */
+  font-size: 1.05rem; /* Уменьшил */
+  padding-left: 1.5rem; /* Для маркеров списка */
+  list-style-position: outside; /* Чтобы маркеры были слева */
 }
 .howwework-list li {
-  margin-bottom: 12px;
+  margin-bottom: 1rem; /* Увеличил */
   line-height: 1.7;
+  padding-left: 10px; /* Отступ текста от маркера */
+  position: relative;
 }
+.howwework-list li::before { /* Кастомные маркеры */
+    content: "\f058"; /* FontAwesome check-circle */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900; /* Solid */
+    color: var(--primary-color);
+    position: absolute;
+    left: -1.5rem; /* Выравнивание с padding-left родителя */
+    top: 2px;
+    font-size: 1.1em;
+}
+
+
 .concierge-service {
-  background: #fff;
-  max-width: 600px;
+  background: var(--light-bg); /* Изменил фон для контраста */
+  max-width: 650px; /* Увеличил */
   margin: 0 auto;
-  border-radius: 16px;
-  box-shadow: 0 4px 14px rgba(11,74,74,0.06);
-  padding: 2rem 1.3rem;
-  margin-bottom: 1.2rem;
+  border-radius: 12px; /* Уменьшил */
+  box-shadow: 0 4px 12px rgba(11,74,74,0.05); /* Легче тень */
+  padding: 1.8rem; /* Уменьшил */
 }
 .concierge-service h3 {
-  color: var(--primary-color);
-  font-size: 1.2rem;
+  color: var(--dark-accent); /* Темнее */
+  font-size: 1.25rem; /* Немного увеличил */
   margin-bottom: 1rem;
+  text-align: center;
 }
 .concierge-service ul {
   text-align: left;
-  font-size: 1.08rem;
-  list-style: disc;
-  margin-left: 1.1rem;
-  color: #244;
+  font-size: 1rem; /* Уменьшил */
+  list-style: none; /* Убираем стандартные маркеры */
+  padding-left: 0; /* Убираем стандартный отступ */
 }
 .concierge-service ul li {
-  margin-bottom: 7px;
+  margin-bottom: 0.6rem; /* Уменьшил */
+  padding-left: 25px; /* Отступ для кастомного маркера */
+  position: relative;
+  color: #444; /* Немного светлее */
 }
+.concierge-service ul li::before {
+    content: "\2713"; /* Галочка Unicode */
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
 
 /* Галерея */
 .gallery-section {
-  padding: 5rem 5%;
-  background: #fff;
-  text-align: center;
-}
-.gallery-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
-  background: linear-gradient(90deg, var(--dark-accent), var(--primary-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  background: var(--light-bg); /* Изменил фон */
 }
 .gallery-tabs {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 1rem; /* Уменьшил */
+  margin-bottom: 2.5rem; /* Увеличил */
+  flex-wrap: wrap; /* Для адаптивности табов */
 }
 .gallery-tabs .tab {
-  padding: 12px 32px;
+  padding: 10px 28px; /* Уменьшил */
   border: 2px solid var(--primary-color);
-  background: #fff;
+  background: var(--white-color);
   color: var(--primary-color);
   font-weight: 600;
-  border-radius: 22px;
+  border-radius: 25px; /* Согласовал с кнопками языка */
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 0.95rem;
 }
+.gallery-tabs .tab:hover,
 .gallery-tabs .tab.active {
   background: var(--primary-color);
-  color: #fff;
+  color: var(--white-color);
+  box-shadow: 0 2px 8px rgba(27,143,143,0.2);
 }
 .gallery-content .tab-content {
   display: none;
-  min-height: 120px;
-  font-size: 1.13rem;
+  min-height: 100px; /* Уменьшил */
+  font-size: 1.05rem;
+  padding: 1rem;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 .gallery-content .tab-content.active {
   display: block;

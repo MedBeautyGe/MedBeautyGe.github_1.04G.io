@@ -15,7 +15,7 @@
   <link rel="icon" href="./images/favicon-16x16.png" type="image/png" sizes="16x16">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10"> <!-- Changed v=9 to v=10 for cache busting -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
@@ -62,7 +62,14 @@
 
   <section id="about" class="about-section" data-aos="fade-up">
     <h2 data-translate="about"></h2>
-    <div class="mission-text" data-translate="mission"></div>
+    <div class="mission-text">
+      <div data-translate="missionIntro"></div>
+      <hr class="mission-separator">
+      <button class="read-more-btn" data-translate="readMoreAbout" aria-expanded="false" aria-controls="missionFullText"></button>
+      <div id="missionFullText" class="mission-full-text" data-translate="mission" style="display: none;">
+          <!-- The content for data-translate="mission" will be populated here by lang.js -->
+      </div>
+    </div>
   </section>
 
   <section id="services" class="services">
@@ -129,6 +136,7 @@
 
   <section id="reviews" class="reviews-section" data-aos="fade-up">
     <h2 data-translate="reviews"></h2>
+    <!-- Сюда будут добавляться отзывы -->
   </section>
 
   <section id="contact" class="contact" data-aos="fade-up">
@@ -158,25 +166,25 @@
     </div>
     <form id="contact-form" action="https://formspree.io/f/xrbqvoly" method="POST" autocomplete="off" novalidate>
       <div class="form-group">
-        <label for="name" class="sr-only">Имя</label>
+        <label for="name" class="sr-only" data-translate="namePlaceholder"></label>
         <i class="fas fa-user"></i>
         <input type="text" id="name" name="name" placeholder="Имя" data-translate="namePlaceholder" required autocomplete="name">
       </div>
       <div class="form-group">
-        <label for="email" class="sr-only">Email</label>
+        <label for="email" class="sr-only" data-translate="emailPlaceholder"></label>
         <i class="fas fa-envelope"></i>
         <input type="email" id="email" name="email" placeholder="Email" data-translate="emailPlaceholder" required autocomplete="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
       </div>
       <div class="form-group">
-        <label for="message" class="sr-only">Сообщение</label>
+        <label for="message" class="sr-only" data-translate="messagePlaceholder"></label>
         <i class="fas fa-comment"></i>
         <textarea id="message" name="message" placeholder="Сообщение" data-translate="messagePlaceholder" required rows="5"></textarea>
       </div>
       <button type="submit" class="submit-btn" data-translate="send" aria-label="Отправить"></button>
       <div id="form-loading" style="display:none; text-align:center; color:#1B8F8F; margin-top:10px;">
-        <span class="spinner"></span> <span id="loading-text">Отправка...</span>
+        <span class="spinner"></span> <span id="loading-text" data-translate="sending">Отправка...</span>
       </div>
-      <div id="form-success" class="form-success-message" style="display:none;">
+      <div id="form-success" class="form-success-message" style="display:none;" data-translate="success">
         Спасибо! Мы свяжемся с вами в ближайшее время.
       </div>
     </form>
@@ -185,27 +193,34 @@
   <script src="lang.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({
+      duration: 800, // Продолжительность анимации
+      once: true // Анимация сработает только один раз
+    });
 
     // Мобильное меню
     const menuToggle = document.querySelector('.menu-toggle');
     const navList = document.querySelector('.nav-list');
     const burgerIcon = document.querySelector('.burger-icon');
     const closeIcon = document.querySelector('.close-icon');
+
     menuToggle.addEventListener('click', function(e) {
       navList.classList.toggle('active');
-      document.body.classList.toggle('menu-open');
-      menuToggle.setAttribute('aria-expanded', navList.classList.contains('active'));
-      burgerIcon.style.display = navList.classList.contains('active') ? 'none' : '';
-      closeIcon.style.display = navList.classList.contains('active') ? '' : 'none';
-      if (navList.classList.contains('active')) {
+      document.body.classList.toggle('menu-open'); // Для оверлея
+      const isActive = navList.classList.contains('active');
+      menuToggle.setAttribute('aria-expanded', isActive);
+      burgerIcon.style.display = isActive ? 'none' : '';
+      closeIcon.style.display = isActive ? '' : 'none';
+      if (isActive) {
         navList.classList.add('slide-in');
       } else {
         navList.classList.remove('slide-in');
       }
     });
-    document.addEventListener('click', function(e) {
-      if (navList.classList.contains('active') && !navList.contains(e.target) && e.target !== menuToggle) {
+
+    // Закрытие меню при клике вне его или на ссылку
+    function closeMenu() {
+      if (navList.classList.contains('active')) {
         navList.classList.remove('active');
         navList.classList.remove('slide-in');
         document.body.classList.remove('menu-open');
@@ -213,18 +228,116 @@
         burgerIcon.style.display = '';
         closeIcon.style.display = 'none';
       }
+    }
+
+    document.addEventListener('click', function(e) {
+      if (navList.classList.contains('active') && 
+          !navList.contains(e.target) && 
+          e.target !== menuToggle && 
+          !menuToggle.contains(e.target)) {
+        closeMenu();
+      }
     });
 
-    // Галерея: табы
+    navList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+
+    // Formspree form submission
+    const contactForm = document.getElementById('contact-form');
+    const formLoading = document.getElementById('form-loading'); 
+    const formSuccess = document.getElementById('form-success');
+    const submitButton = contactForm.querySelector('.submit-btn');
+    const loadingTextElement = document.getElementById('loading-text'); 
+
+    contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        const originalButtonHTML = submitButton.innerHTML; 
+        const currentSendingText = loadingTextElement.innerHTML; 
+
+        submitButton.disabled = true;
+        submitButton.innerHTML = `<span class="spinner"></span> ${currentSendingText}`; 
+        
+        formSuccess.style.display = 'none'; 
+
+        const formData = new FormData(contactForm);
+        
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                formSuccess.style.display = 'block'; 
+                contactForm.reset(); 
+            } else {
+                const data = await response.json();
+                if (Object.hasOwn(data, 'errors')) {
+                    alert(data["errors"].map(error => error["message"]).join(", "));
+                } else {
+                    const errorText = data.error || 'Произошла ошибка при отправке формы.';
+                    alert(errorText);
+                }
+            }
+        } catch (error) {
+            alert('Произошла ошибка при отправке формы. Пожалуйста, проверьте ваше интернет-соединение.');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonHTML; 
+        }
+    });
+
+    // Scripts that need DOMContentLoaded
     document.addEventListener('DOMContentLoaded', function() {
+      // Галерея: табы
       document.querySelectorAll('.gallery-tabs .tab').forEach(btn => {
         btn.addEventListener('click', function() {
           document.querySelectorAll('.gallery-tabs .tab').forEach(b => b.classList.remove('active'));
           document.querySelectorAll('.gallery-content .tab-content').forEach(tc => tc.classList.remove('active'));
           btn.classList.add('active');
-          document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+          const tabId = 'tab-' + btn.dataset.tab;
+          const tabContent = document.getElementById(tabId);
+          if (tabContent) {
+             tabContent.classList.add('active');
+          }
         });
       });
+
+      // "Read More" for About Us section
+      const readMoreBtn = document.querySelector('.read-more-btn');
+      const missionFullText = document.getElementById('missionFullText');
+
+      if (readMoreBtn && missionFullText) {
+        // Initial data-translate attribute is set in HTML.
+        // applyTranslations (called on DOMContentLoaded from lang.js) will set initial text.
+
+        readMoreBtn.addEventListener('click', function() {
+          const isExpanded = missionFullText.style.display !== 'none';
+          const currentLang = localStorage.getItem('lang') || 'ru';
+
+          if (isExpanded) {
+            missionFullText.style.display = 'none';
+            this.setAttribute('data-translate', 'readMoreAbout');
+            this.setAttribute('aria-expanded', 'false');
+          } else {
+            missionFullText.style.display = 'block';
+            this.setAttribute('data-translate', 'readLessAbout');
+            this.setAttribute('aria-expanded', 'true');
+          }
+
+          // Update button text immediately based on the new data-translate key and current language
+          const newKey = this.getAttribute('data-translate');
+          if (window.translations && window.translations[currentLang] && window.translations[currentLang][newKey]) {
+            this.textContent = window.translations[currentLang][newKey];
+          }
+        });
+      }
     });
   </script>
 </body>
