@@ -92,32 +92,33 @@ body.menu-open::after {
 }
 
 .logo {
-  height: 50px; /* Уменьшил немного */
+  height: 55px; 
   width: auto;
-  max-width: 180px; /* Уменьшил немного */
+  max-width: 190px; 
   transition: transform 0.3s ease;
 }
 .logo:hover,
 .logo:focus {
-  transform: scale(1.05); /* Уменьшил эффект */
+  transform: scale(2.0); /* <<< ИЗМЕНЕНО ЗДЕСЬ: увеличение в два раза. Ранее было scale(1.1) */
+                          /* Рекомендуется использовать более умеренное значение, например 1.1 или 1.15 */
 }
 
 .slogan {
-  font-size: 1.1rem; /* Немного уменьшил */
+  font-size: 1.1rem; 
   font-weight: 600;
   text-transform: uppercase;
   color: var(--primary-color);
   text-align: center;
-  width: 100%; /* Для корректного расположения при переносе */
-  margin: 8px 0; /* Уменьшил отступы */
-  order: 1; /* По умолчанию */
+  width: 100%; 
+  margin: 8px 0; 
+  order: 1; 
 }
 
 .nav-list {
   display: flex;
-  gap: 1.8rem; /* Немного уменьшил */
+  gap: 1.8rem; 
   list-style: none;
-  align-items: center; /* Для выравнивания, если высота элементов разная */
+  align-items: center; 
 }
 
 .nav-list a {
@@ -125,10 +126,10 @@ body.menu-open::after {
   color: var(--text-color);
   font-weight: 500;
   transition: color 0.3s ease;
-  padding: 5px 0; /* Для лучшего восприятия кликабельной области */
+  padding: 5px 0; 
   position: relative;
 }
-.nav-list a::after { /* Эффект подчеркивания при наведении */
+.nav-list a::after { 
   content: '';
   position: absolute;
   width: 0;
@@ -140,8 +141,8 @@ body.menu-open::after {
 }
 
 .nav-list a:hover,
-.nav-list a:focus, /* Добавил :focus для доступности */
-.nav-list a.active-link { /* Для активной ссылки (если будет JS логика) */
+.nav-list a:focus, 
+.nav-list a.active-link { 
   color: var(--primary-color);
 }
 .nav-list a:hover::after,
@@ -152,7 +153,7 @@ body.menu-open::after {
 
 
 @keyframes slideInMenu {
-  from { transform: translateX(-100%); opacity: 0; } /* Изменил на translateX */
+  from { transform: translateX(-100%); opacity: 0; } 
   to { transform: translateX(0); opacity: 1; }
 }
 .nav-list.slide-in {
@@ -162,78 +163,78 @@ body.menu-open::after {
 .advantages-list {
   display: flex;
   justify-content: center;
-  gap: 1.5rem; /* Уменьшил */
-  margin: 1.8rem 0 0.5rem 0; /* Уменьшил верхний отступ */
+  gap: 1.5rem; 
+  margin: 1.8rem 0 0.5rem 0; 
   list-style: none;
   flex-wrap: wrap;
 }
 .advantages-list li {
   display: flex;
   align-items: center;
-  font-size: 1rem; /* Уменьшил */
+  font-size: 1rem; 
   font-weight: 500;
   color: var(--white-color);
   gap: 0.5em;
-  background: rgba(27, 143, 143, 0.25); /* Чуть насыщеннее */
-  padding: 0.6em 1.2em; /* Уменьшил */
+  background: rgba(27, 143, 143, 0.25); 
+  padding: 0.6em 1.2em; 
   border-radius: 18px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Легкая тень */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
 }
 .advantages-list i {
   color: var(--white-color);
-  font-size: 1.1em; /* Уменьшил */
+  font-size: 1.1em; 
 }
 
 .hero {
   background: linear-gradient(135deg, var(--dark-accent), var(--primary-color));
-  padding: 5rem 5% 3.5rem 5%; /* Уменьшил вертикальные отступы */
+  padding: 5rem 5% 3.5rem 5%; 
   text-align: center;
   color: var(--white-color);
-  position: relative; /* Для возможных псевдоэлементов */
+  position: relative; 
 }
 
 .hero-content h1 {
-  font-size: 2.2rem; /* Уменьшил */
-  margin-bottom: 1.2rem; /* Уменьшил */
+  font-size: 2.2rem; 
+  margin-bottom: 1.2rem; 
   font-weight: 600;
 }
 
 .hero-content p {
-  font-size: 1.1rem; /* Уменьшил */
+  font-size: 1.1rem; 
   opacity: 0.9;
-  max-width: 700px; /* Ограничил ширину для лучшей читаемости */
+  max-width: 700px; 
   margin-left: auto;
   margin-right: auto;
 }
 
 .cta-btn {
   display: inline-block;
-  margin-top: 1.8rem; /* Уменьшил */
-  padding: 14px 35px; /* Уменьшил */
-  font-size: 1rem; /* Уменьшил */
+  margin-top: 1.8rem; 
+  padding: 14px 35px; 
+  font-size: 1rem; 
   font-weight: 600;
   color: var(--white-color);
   background: linear-gradient(90deg, var(--primary-color) 0%, var(--dark-accent) 100%);
   border: none;
   border-radius: 32px;
-  box-shadow: 0 4px 12px rgba(11, 74, 74, 0.25); /* Усилил тень */
+  box-shadow: 0 4px 12px rgba(11, 74, 74, 0.25); 
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Добавил ease и тень */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
 }
 .cta-btn:hover,
-.cta-btn:focus { /* Добавил :focus */
+.cta-btn:focus { 
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 6px 16px rgba(11, 74, 74, 0.3);
 }
 
-section { /* Общий стиль для секций */
-  padding: 4rem 5%; /* Стандартизировал отступы */
+section { 
+  padding: 4rem 5%; 
 }
 
-section h2 { /* Общий стиль для заголовков секций */
+section h2 { 
   text-align: center;
-  margin-bottom: 2.5rem; /* Уменьшил */
-  font-size: 2rem; /* Уменьшил */
+  margin-bottom: 2.5rem; 
+  font-size: 2rem; 
   background: linear-gradient(90deg, var(--dark-accent), var(--primary-color));
   -webkit-background-clip: text;
   background-clip: text;
@@ -248,31 +249,31 @@ section h2 { /* Общий стиль для заголовков секций *
 
 .service-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Уменьшил minmax */
-  gap: 2rem; /* Уменьшил */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 2rem; 
 }
 
 .service-card {
   background: var(--white-color);
-  padding: 1.8rem; /* Уменьшил */
+  padding: 1.8rem; 
   border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(11, 74, 74, 0.08); /* Уменьшил интенсивность тени */
+  box-shadow: 0 6px 20px rgba(11, 74, 74, 0.08); 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex; /* Для выравнивания контента по высоте */
+  display: flex; 
   flex-direction: column;
   text-align: center;
 }
 
 .service-card:hover {
-  transform: translateY(-8px); /* Уменьшил сдвиг */
+  transform: translateY(-8px); 
   box-shadow: 0 10px 25px rgba(11, 74, 74, 0.12);
 }
 
 .service-img {
   width: 100%;
-  max-width: 120px; /* Уменьшил */
+  max-width: 120px; 
   height: auto;
-  margin: 0 auto 1.2rem; /* Уменьшил */
+  margin: 0 auto 1.2rem; 
 }
 .service-card h3 {
   font-size: 1.3rem;
@@ -282,37 +283,37 @@ section h2 { /* Общий стиль для заголовков секций *
 .service-card p {
   font-size: 0.95rem;
   color: #555;
-  flex-grow: 1; /* Чтобы карточки были одинаковой высоты */
+  flex-grow: 1; 
 }
 
 
 .contact {
   display: grid;
-  grid-template-columns: 1fr 1.2fr; /* Немного изменил пропорции */
-  gap: 3rem; /* Уменьшил */
+  grid-template-columns: 1fr 1.2fr; 
+  gap: 3rem; 
   background: var(--white-color);
 }
 
 .contact-info h2 {
   margin-bottom: 1rem;
-  font-size: 1.8rem; /* Уменьшил */
+  font-size: 1.8rem; 
   color: var(--dark-accent);
-  text-align: left; /* Выровнял по левому краю */
-  background: none; /* Убрал градиент для этого заголовка */
+  text-align: left; 
+  background: none; 
   -webkit-background-clip: unset;
   background-clip: unset;
 }
 .contact-info p {
-  margin-bottom: 0.8rem; /* Увеличил */
+  margin-bottom: 0.8rem; 
   font-size: 1rem;
-  display: flex; /* Для выравнивания иконок */
+  display: flex; 
   align-items: center;
 }
 .contact-info p i {
   margin-right: 10px;
   color: var(--primary-color);
   font-size: 1.2rem;
-  width: 20px; /* Фиксированная ширина для иконки */
+  width: 20px; 
   text-align: center;
 }
 .contact-info a {
@@ -326,48 +327,48 @@ section h2 { /* Общий стиль для заголовков секций *
   text-decoration: underline;
 }
 .or-message {
-  margin-top: 1.5rem; /* Увеличил */
+  margin-top: 1.5rem; 
   font-weight: 500;
   font-size: 1rem;
 }
 
 .form-group {
-  margin-bottom: 1.2rem; /* Уменьшил */
+  margin-bottom: 1.2rem; 
   position: relative;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  font-size: 1rem; /* Стандартизировал */
-  padding: 12px 18px 12px 45px; /* Уменьшил padding */
-  border: 1px solid var(--border-color); /* Сделал тоньше */
+  font-size: 1rem; 
+  padding: 12px 18px 12px 45px; 
+  border: 1px solid var(--border-color); 
   border-radius: 8px;
   transition: all 0.3s ease;
-  background-color: #fcfcfc; /* Легкий фон для полей */
+  background-color: #fcfcfc; 
 }
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(27, 143, 143, 0.15); /* Изменил эффект фокуса */
+  box-shadow: 0 0 0 3px rgba(27, 143, 143, 0.15); 
   background-color: var(--white-color);
 }
 
 .form-group i {
   position: absolute;
   left: 15px;
-  top: 15px; /* Выровнял по верхнему краю padding */
-  transform: translateY(0); /* Убрал transform, т.к. выравниваем по padding */
-  font-size: 1.1rem; /* Уменьшил */
+  top: 15px; 
+  transform: translateY(0); 
+  font-size: 1.1rem; 
   color: var(--primary-color);
   opacity: 0.7;
   transition: opacity 0.3s ease;
 }
-.form-group input:focus + i, /* Не сработает, т.к. i перед input */
-.form-group textarea:focus + i { /* Нужно будет JS или перестановка i после input */
-  /* opacity: 1; */ /* Для этого иконка должна быть после поля ввода, либо JS */
+.form-group input:focus + i, 
+.form-group textarea:focus + i { 
+  /* opacity: 1; */ 
 }
-.form-group input:focus ~ i, /* Если иконка после поля ввода */
+.form-group input:focus ~ i, 
 .form-group textarea:focus ~ i {
     opacity: 1;
 }
@@ -375,8 +376,8 @@ section h2 { /* Общий стиль для заголовков секций *
 
 .submit-btn {
   width: 100%;
-  padding: 14px; /* Уменьшил */
-  font-size: 1.05rem; /* Уменьшил */
+  padding: 14px; 
+  font-size: 1.05rem; 
   background: linear-gradient(90deg, var(--primary-color) 0%, var(--dark-accent) 100%);
   color: white;
   border: none;
@@ -385,14 +386,14 @@ section h2 { /* Общий стиль для заголовков секций *
   font-weight: 600;
   box-shadow: 0 4px 12px rgba(27, 143, 143, 0.15);
   transition: all 0.3s ease;
-  display: flex; /* для спиннера */
+  display: flex; 
   align-items: center;
   justify-content: center;
 }
 
-.submit-btn:hover:not(:disabled), /* добавил :not(:disabled) */
+.submit-btn:hover:not(:disabled), 
 .submit-btn:focus:not(:disabled) {
-  background: linear-gradient(90deg, var(--dark-accent) 0%, var(--primary-color) 100%); /* Инверсия градиента */
+  background: linear-gradient(90deg, var(--dark-accent) 0%, var(--primary-color) 100%); 
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(27, 143, 143, 0.25);
 }
@@ -406,8 +407,8 @@ section h2 { /* Общий стиль для заголовков секций *
   text-align: center;
   color: var(--primary-color);
   font-weight: 600;
-  font-size: 1.05rem; /* Уменьшил */
-  margin-top: 1.2rem; /* Уменьшил */
+  font-size: 1.05rem; 
+  margin-top: 1.2rem; 
   padding: 10px;
   background-color: #e6f4f4;
   border-left: 4px solid var(--primary-color);
@@ -416,30 +417,30 @@ section h2 { /* Общий стиль для заголовков секций *
 
 .social-links {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Сделал адаптивным */
-  gap: 0.8rem; /* Уменьшил */
-  margin-top: 1.5rem; /* Уменьшил */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  gap: 0.8rem; 
+  margin-top: 1.5rem; 
 }
 
 .social-links a {
   display: flex;
   align-items: center;
-  gap: 8px; /* Уменьшил */
-  padding: 10px 15px; /* Уменьшил */
+  gap: 8px; 
+  padding: 10px 15px; 
   border-radius: 8px;
   color: var(--white-color) !important;
   text-decoration: none;
   transition: transform 0.2s ease, opacity 0.2s ease;
-  font-size: 0.9rem; /* Уменьшил шрифт */
+  font-size: 0.9rem; 
 }
 
 .social-links a:hover {
-  transform: translateY(-3px) scale(1.03); /* Уменьшил scale */
+  transform: translateY(-3px) scale(1.03); 
   opacity: 0.9;
 }
 
 .social-links a i {
-  font-size: 1.3rem; /* Уменьшил */
+  font-size: 1.3rem; 
   width: 20px;
   text-align: center;
 }
@@ -447,7 +448,7 @@ section h2 { /* Общий стиль для заголовков секций *
 .social-links .whatsapp { background: #25D366; }
 .social-links .telegram { background: #229ED9; }
 .social-links .instagram { 
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); /* Обновленный градиент */
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
 }
 .social-links .facebook { background: #1877F2; }
 
@@ -457,15 +458,15 @@ section h2 { /* Общий стиль для заголовков секций *
   padding: 0 !important; margin: -1px !important;
   overflow: hidden !important;
   clip: rect(0,0,0,0) !important;
-  white-space: nowrap !important; /* Добавлено для некоторых скринридеров */
+  white-space: nowrap !important; 
   border: 0 !important;
 }
 
 
 @media (max-width: 1000px) {
   .logo {
-    max-width: 160px; /* Увеличил немного для этого разрешения */
-    height: 45px;
+    max-width: 170px; 
+    height: 50px;     
   }
   .advantages-list {
     gap: 1rem;
@@ -474,7 +475,7 @@ section h2 { /* Общий стиль для заголовков секций *
     font-size: 0.95rem;
   }
    .contact {
-    grid-template-columns: 1fr; /* В один столбец раньше */
+    grid-template-columns: 1fr; 
   }
 }
 
@@ -486,55 +487,55 @@ section h2 { /* Общий стиль для заголовков секций *
     display: block;
   }
   .nav-list {
-    display: none; /* Управляется JS */
-    position: fixed; /* Изменил на fixed для полного экрана */
+    display: none; 
+    position: fixed; 
     left: 0; 
-    top: 0; /* От самого верха */
-    width: 80%; /* Ширина меню */
-    max-width: 300px; /* Максимальная ширина */
-    height: 100vh; /* На всю высоту */
+    top: 0; 
+    width: 80%; 
+    max-width: 300px; 
+    height: 100vh; 
     flex-direction: column;
-    gap: 0.5rem; /* Уменьшил отступ */
-    padding: 5rem 2rem 2rem; /* Отступы внутри меню */
+    gap: 0.5rem; 
+    padding: 5rem 2rem 2rem; 
     background: var(--white-color);
     z-index: 1001;
     box-shadow: 5px 0 15px rgba(11, 74, 74, 0.15);
-    overflow-y: auto; /* Если ссылок много */
+    overflow-y: auto; 
   }
   .nav-list.active {
     display: flex;
   }
   .nav-list a {
-    font-size: 1.1rem; /* Крупнее для мобильных */
+    font-size: 1.1rem; 
     padding: 10px 0;
-    display: block; /* Чтобы занимали всю ширину */
+    display: block; 
     border-bottom: 1px solid #f0f0f0;
   }
   .nav-list a::after {
-      display: none; /* Убираем подчеркивание в моб. меню */
+      display: none; 
   }
   .nav-list li:last-child a {
       border-bottom: none;
   }
 
   .logo {
-    max-width: 140px; /* Уменьшил для мобильных */
-    height: 40px; 
+    max-width: 150px; 
+    height: 45px;     
   }
   .slogan {
-    order: -1; /* Логотип и кнопка меню, потом слоган */
-    width: auto; /* Чтобы не занимал всю ширину */
+    order: -1; 
+    width: auto; 
     margin: 0;
-    flex-grow: 1; /* Занимает доступное пространство */
+    flex-grow: 1; 
     text-align: left;
     padding-left: 15px;
     font-size: 0.9rem;
   }
    .sticky-nav {
-    justify-content: space-between; /* Для правильного расположения лого, слогана, кнопки */
-    flex-wrap: nowrap; /* Предотвращаем перенос слогана */
+    justify-content: space-between; 
+    flex-wrap: nowrap; 
   }
-  .logo-slogan-wrapper { /* Обертка для лого и слогана, если нужно */
+  .logo-slogan-wrapper { 
       display: flex;
       align-items: center;
   }
@@ -544,7 +545,7 @@ section h2 { /* Общий стиль для заголовков секций *
     grid-template-columns: 1fr;
   }
   .contact {
-    gap: 2.5rem; /* Уменьшил */
+    gap: 2.5rem; 
     padding: 3rem 5%;
   }
   .hero {
@@ -558,11 +559,11 @@ section h2 { /* Общий стиль для заголовков секций *
   }
   .advantages-list {
     flex-direction: column;
-    align-items: center; /* Центрируем элементы */
+    align-items: center; 
     gap: 0.8rem;
   }
   .social-links {
-    grid-template-columns: 1fr; /* Одна колонка */
+    grid-template-columns: 1fr; 
   }
   section {
       padding: 3rem 5%;
@@ -589,18 +590,18 @@ section h2 { /* Общий стиль для заголовков секций *
     font-size: 1rem;
   }
   .logo {
-    max-width: 120px;
-    height: 35px;
+    max-width: 130px; 
+    height: 40px;     
   }
    .slogan {
-    display: none; /* Скрываем слоган на очень маленьких экранах для экономии места */
+    display: none; 
   }
   .submit-btn {
     padding: 12px;
     font-size: 1rem;
   }
   .hero-content h1 {
-    font-size: 1.6rem; /* Еще меньше */
+    font-size: 1.6rem; 
   }
    .hero-content p {
     font-size: 0.9rem;
@@ -645,14 +646,14 @@ section h2 { /* Общий стиль для заголовков секций *
 
 .spinner {
   display: inline-block;
-  width: 20px; height: 20px; /* Уменьшил */
-  border: 3px solid rgba(255,255,255,0.3); /* Цвет для фона спиннера на кнопке */
-  border-top-color: var(--white-color); /* Цвет активной части спиннера */
+  width: 20px; height: 20px; 
+  border: 3px solid rgba(255,255,255,0.3); 
+  border-top-color: var(--white-color); 
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
   margin-right: 8px;
 }
-.submit-btn .spinner { /* Специфичный стиль для спиннера на кнопке */
+.submit-btn .spinner { 
     border: 3px solid rgba(255,255,255,0.3);
     border-top-color: var(--white-color);
 }
@@ -660,40 +661,40 @@ section h2 { /* Общий стиль для заголовков секций *
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-#form-loading { /* Если этот блок еще используется */
+#form-loading { 
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#form-loading .spinner { /* Спиннер для отдельного блока загрузки */
+#form-loading .spinner { 
     border: 3px solid #b2dfdb;
     border-top-color: var(--primary-color);
 }
 
 
-.input-error { /* Стиль для ошибок валидации (если будет JS валидация) */
+.input-error { 
   color: #e53935;
   margin-top: 5px;
   font-size: 0.9em;
-  display: block; /* Чтобы занимал свою строку */
+  display: block; 
 }
 
 /* --- О НАС и ОТЗЫВЫ --- */
-.about-section { /* Убрал .reviews-section, т.к. у него фон другой */
+.about-section { 
   background: var(--light-bg);
 }
 .reviews-section {
   background: var(--white-color);
 }
 .mission-text {
-  max-width: 850px; /* Немного уменьшил */
+  max-width: 850px; 
   margin: 0 auto;
-  font-size: 1.05rem; /* Немного уменьшил */
-  line-height: 1.75; /* Увеличил для лучшей читаемости */
-  color: #333; /* Чуть темнее */
+  font-size: 1.05rem; 
+  line-height: 1.75; 
+  color: #333; 
   background: var(--white-color);
-  padding: 2rem; /* Уменьшил */
-  border-radius: 15px; /* Согласовал с другими карточками */
+  padding: 2rem; 
+  border-radius: 15px; 
   box-shadow: 0 8px 25px rgba(11,74,74,0.07);
   text-align: left;
 }
@@ -702,45 +703,17 @@ section h2 { /* Общий стиль для заголовков секций *
     font-weight: 600;
 }
 .mission-text div[data-translate="missionIntro"] {
-    margin-bottom: 0; /* Изменено, т.к. разделитель и кнопка идут следом */
+    margin-bottom: 1rem; 
 }
-.mission-text div[data-translate="mission"] { /* Это теперь .mission-full-text */
-    margin-top: 1rem; /* Отступ перед полным текстом, если он отображается */
+.mission-text div[data-translate="mission"] {
+    margin-top: 1rem; 
 }
 
 .mission-separator {
-  margin: 1.5rem auto; /* Уменьшил отступы */
+  margin: 1.5rem auto; 
   border: none;
   border-top: 1px solid var(--border-color); 
-  width: 70%; /* Уменьшил */
-}
-
-/* Стили для кнопки "Читать полностью" и раскрывающегося текста */
-.read-more-btn {
-  display: inline-block;
-  margin-top: 1rem; /* Отступ сверху от разделителя */
-  margin-bottom: 1rem; /* Отступ снизу, если текст свернут */
-  padding: 10px 20px;
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.read-more-btn:hover,
-.read-more-btn:focus {
-  background-color: var(--dark-accent);
-  transform: translateY(-2px);
-}
-
-.mission-full-text {
-  /* display: none; устанавливается инлайново в HTML и JS */
-  margin-top: 1rem; /* Отступ между кнопкой и полным текстом, когда он показан */
-  /* Стили текста (размер шрифта, межстрочный интервал, цвет) наследуются от .mission-text */
+  width: 70%; 
 }
 
 
@@ -752,58 +725,58 @@ section h2 { /* Общий стиль для заголовков секций *
 }
 .howwework-list {
   text-align: left;
-  max-width: 700px; /* Уменьшил */
-  margin: 0 auto 2.5rem auto; /* Увеличил нижний отступ */
-  font-size: 1.05rem; /* Уменьшил */
-  padding-left: 1.5rem; /* Для маркеров списка */
-  list-style-position: outside; /* Чтобы маркеры были слева */
+  max-width: 700px; 
+  margin: 0 auto 2.5rem auto; 
+  font-size: 1.05rem; 
+  padding-left: 1.5rem; 
+  list-style-position: outside; 
 }
 .howwework-list li {
-  margin-bottom: 1rem; /* Увеличил */
+  margin-bottom: 1rem; 
   line-height: 1.7;
-  padding-left: 10px; /* Отступ текста от маркера */
+  padding-left: 10px; 
   position: relative;
 }
-.howwework-list li::before { /* Кастомные маркеры */
-    content: "\f058"; /* FontAwesome check-circle */
+.howwework-list li::before { 
+    content: "\f058"; 
     font-family: "Font Awesome 6 Free";
-    font-weight: 900; /* Solid */
+    font-weight: 900; 
     color: var(--primary-color);
     position: absolute;
-    left: -1.5rem; /* Выравнивание с padding-left родителя */
+    left: -1.5rem; 
     top: 2px;
     font-size: 1.1em;
 }
 
 
 .concierge-service {
-  background: var(--light-bg); /* Изменил фон для контраста */
-  max-width: 650px; /* Увеличил */
+  background: var(--light-bg); 
+  max-width: 650px; 
   margin: 0 auto;
-  border-radius: 12px; /* Уменьшил */
-  box-shadow: 0 4px 12px rgba(11,74,74,0.05); /* Легче тень */
-  padding: 1.8rem; /* Уменьшил */
+  border-radius: 12px; 
+  box-shadow: 0 4px 12px rgba(11,74,74,0.05); 
+  padding: 1.8rem; 
 }
 .concierge-service h3 {
-  color: var(--dark-accent); /* Темнее */
-  font-size: 1.25rem; /* Немного увеличил */
+  color: var(--dark-accent); 
+  font-size: 1.25rem; 
   margin-bottom: 1rem;
   text-align: center;
 }
 .concierge-service ul {
   text-align: left;
-  font-size: 1rem; /* Уменьшил */
-  list-style: none; /* Убираем стандартные маркеры */
-  padding-left: 0; /* Убираем стандартный отступ */
+  font-size: 1rem; 
+  list-style: none; 
+  padding-left: 0; 
 }
 .concierge-service ul li {
-  margin-bottom: 0.6rem; /* Уменьшил */
-  padding-left: 25px; /* Отступ для кастомного маркера */
+  margin-bottom: 0.6rem; 
+  padding-left: 25px; 
   position: relative;
-  color: #444; /* Немного светлее */
+  color: #444; 
 }
 .concierge-service ul li::before {
-    content: "\2713"; /* Галочка Unicode */
+    content: "\2713"; 
     color: var(--primary-color);
     position: absolute;
     left: 0;
@@ -814,22 +787,22 @@ section h2 { /* Общий стиль для заголовков секций *
 
 /* Галерея */
 .gallery-section {
-  background: var(--light-bg); /* Изменил фон */
+  background: var(--light-bg); 
 }
 .gallery-tabs {
   display: flex;
   justify-content: center;
-  gap: 1rem; /* Уменьшил */
-  margin-bottom: 2.5rem; /* Увеличил */
-  flex-wrap: wrap; /* Для адаптивности табов */
+  gap: 1rem; 
+  margin-bottom: 2.5rem; 
+  flex-wrap: wrap; 
 }
 .gallery-tabs .tab {
-  padding: 10px 28px; /* Уменьшил */
+  padding: 10px 28px; 
   border: 2px solid var(--primary-color);
   background: var(--white-color);
   color: var(--primary-color);
   font-weight: 600;
-  border-radius: 25px; /* Согласовал с кнопками языка */
+  border-radius: 25px; 
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   font-size: 0.95rem;
@@ -842,7 +815,7 @@ section h2 { /* Общий стиль для заголовков секций *
 }
 .gallery-content .tab-content {
   display: none;
-  min-height: 100px; /* Уменьшил */
+  min-height: 100px; 
   font-size: 1.05rem;
   padding: 1rem;
   background-color: var(--white-color);
