@@ -15,7 +15,7 @@
   <link rel="icon" href="./images/favicon-16x16.png" type="image/png" sizes="16x16">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=9">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
@@ -40,6 +40,8 @@
       <li><a href="#home" data-translate="home"></a></li>
       <li><a href="#about" data-translate="about"></a></li>
       <li><a href="#services" data-translate="services"></a></li>
+      <li><a href="#howwework" data-translate="howWeWork"></a></li>
+      <li><a href="#gallery" data-translate="gallery"></a></li>
       <li><a href="#reviews" data-translate="reviews"></a></li>
       <li><a href="#contact" data-translate="contact"></a></li>
     </ul>
@@ -58,7 +60,6 @@
     </div>
   </section>
 
-  <!-- О НАС -->
   <section id="about" class="about-section" data-aos="fade-up">
     <h2 data-translate="about"></h2>
     <div class="mission-text" data-translate="mission"></div>
@@ -67,31 +68,67 @@
   <section id="services" class="services">
     <h2 data-translate="ourServices" data-aos="fade-up"></h2>
     <div class="service-container">
-      <div class="service-card" data-aos="zoom-in" itemscope itemtype="https://schema.org/MedicalProcedure">
-        <meta itemprop="medicalSpecialty" content="Travel Logistics">
-        <img src="./images/service-travel.png" alt="Логистика — организация перелётов и проживания" class="service-img" loading="lazy">
+      <div class="service-card" data-aos="zoom-in">
+        <img src="./images/service-travel.png" alt="Логистика" class="service-img" loading="lazy">
         <h3 data-translate="travel"></h3>
         <p data-translate="travelDesc"></p>
       </div>
-      <div class="service-card" data-aos="zoom-in" itemscope itemtype="https://schema.org/MedicalProcedure">
-        <meta itemprop="medicalSpecialty" content="Plastic Surgery">
-        <img src="./images/service-rhinoplasty.png" alt="Медицинские услуги — пластическая хирургия, ринопластика" class="service-img" loading="lazy">
+      <div class="service-card" data-aos="zoom-in">
+        <img src="./images/service-rhinoplasty.png" alt="Медицинские услуги" class="service-img" loading="lazy">
         <h3 data-translate="rhino"></h3>
         <p data-translate="rhinoDesc"></p>
       </div>
-      <div class="service-card" data-aos="zoom-in" itemscope itemtype="https://schema.org/MedicalProcedure">
-        <meta itemprop="medicalSpecialty" content="Rehabilitation">
-        <img src="./images/service-care.png" alt="Реабилитация — послеоперационный уход и поддержка" class="service-img" loading="lazy">
+      <div class="service-card" data-aos="zoom-in">
+        <img src="./images/service-care.png" alt="Реабилитация" class="service-img" loading="lazy">
         <h3 data-translate="care"></h3>
         <p data-translate="careDesc"></p>
       </div>
     </div>
   </section>
 
-  <!-- ОТЗЫВЫ -->
+  <!-- КАК МЫ РАБОТАЕМ -->
+  <section id="howwework" class="howwework-section" data-aos="fade-up">
+    <h2 data-translate="howWeWork"></h2>
+    <ol class="howwework-list">
+      <li data-translate="stepConsult"></li>
+      <li data-translate="stepDocs"></li>
+      <li data-translate="stepClinic"></li>
+      <li data-translate="stepContract"></li>
+      <li data-translate="stepArrival"></li>
+      <li data-translate="stepTreatment"></li>
+      <li data-translate="stepRehab"></li>
+      <li data-translate="stepSupport"></li>
+    </ol>
+    <div class="concierge-service">
+      <h3 data-translate="conciergeService"></h3>
+      <ul>
+        <li data-translate="conciergeMeet"></li>
+        <li data-translate="conciergeEscort"></li>
+        <li data-translate="conciergeExcursions"></li>
+        <li data-translate="conciergeHousehold"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ГАЛЕРЕЯ -->
+  <section id="gallery" class="gallery-section" data-aos="fade-up">
+    <h2 data-translate="gallery"></h2>
+    <div class="gallery-tabs">
+      <button class="tab active" data-tab="procedures" data-translate="galleryProcedures"></button>
+      <button class="tab" data-tab="tourism" data-translate="galleryTourism"></button>
+    </div>
+    <div class="gallery-content">
+      <div class="tab-content active" id="tab-procedures">
+        <p data-translate="galleryProceduresSoon"></p>
+      </div>
+      <div class="tab-content" id="tab-tourism">
+        <p data-translate="galleryTourismSoon"></p>
+      </div>
+    </div>
+  </section>
+
   <section id="reviews" class="reviews-section" data-aos="fade-up">
     <h2 data-translate="reviews"></h2>
-    <!-- Здесь будут размещены отзывы -->
   </section>
 
   <section id="contact" class="contact" data-aos="fade-up">
@@ -148,7 +185,6 @@
   <script src="lang.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Init AOS
     AOS.init();
 
     // Мобильное меню
@@ -179,61 +215,17 @@
       }
     });
 
-    // === Валидация формы и индикатор ===
-    const contactForm = document.getElementById('contact-form');
-    const formSuccess = document.getElementById('form-success');
-    const formLoading = document.getElementById('form-loading');
-    const loadingText = document.getElementById('loading-text');
-    function getTranslation(key) {
-      const lang = localStorage.getItem('lang') || 'ru';
-      return (window.translations && window.translations[lang] && window.translations[lang][key]) || '';
-    }
-    contactForm.addEventListener('submit', function(e) {
-      document.querySelectorAll('.input-error').forEach(el => el.remove());
-      formSuccess.style.display = 'none';
-
-      let valid = true;
-      const nameInput = document.getElementById('name');
-      if (nameInput.value.trim().length < 2) {
-        showError(nameInput, getTranslation('errorName') || 'Введите имя (минимум 2 буквы)');
-        valid = false;
-      }
-      const emailInput = document.getElementById('email');
-      const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-      if (!emailRegex.test(emailInput.value.trim())) {
-        showError(emailInput, getTranslation('errorEmail') || 'Введите корректный email');
-        valid = false;
-      }
-      const msgInput = document.getElementById('message');
-      if (msgInput.value.trim().length < 5) {
-        showError(msgInput, getTranslation('errorMessage') || 'Сообщение слишком короткое');
-        valid = false;
-      }
-
-      if (!valid) {
-        e.preventDefault();
-        return false;
-      }
-
-      loadingText.textContent = getTranslation('sending') || 'Отправка...';
-      formLoading.style.display = 'block';
-      formSuccess.style.display = 'none';
+    // Галерея: табы
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.gallery-tabs .tab').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.gallery-tabs .tab').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.gallery-content .tab-content').forEach(tc => tc.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+        });
+      });
     });
-
-    contactForm.addEventListener('submit', function(e){
-      setTimeout(function() {
-        formSuccess.textContent = getTranslation('success') || 'Спасибо! Мы свяжемся с вами в ближайшее время.';
-        formSuccess.style.display = 'block';
-        formLoading.style.display = 'none';
-      }, 700);
-    });
-
-    function showError(input, message) {
-      const error = document.createElement('div');
-      error.className = 'input-error';
-      error.textContent = message;
-      input.parentNode.appendChild(error);
-    }
   </script>
 </body>
 </html>

@@ -510,3 +510,98 @@ body.menu-open::after {
     font-size: 1rem;
   }
 }
+
+/* ====== ДОБАВЛЕННЫЕ НОВЫЕ СЕКЦИИ ====== */
+
+/* Блок "Как мы работаем" */
+.howwework-section {
+  padding: 5rem 5%;
+  background: #fff;
+  text-align: center;
+}
+.howwework-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--dark-accent), var(--primary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.howwework-list {
+  text-align: left;
+  max-width: 750px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.13rem;
+  padding-left: 1.4rem;
+}
+.howwework-list li {
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+.concierge-service {
+  background: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(11,74,74,0.06);
+  padding: 2rem 1.3rem;
+  margin-bottom: 1.2rem;
+}
+.concierge-service h3 {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.concierge-service ul {
+  text-align: left;
+  font-size: 1.08rem;
+  list-style: disc;
+  margin-left: 1.1rem;
+  color: #244;
+}
+.concierge-service ul li {
+  margin-bottom: 7px;
+}
+
+/* Галерея */
+.gallery-section {
+  padding: 5rem 5%;
+  background: #fff;
+  text-align: center;
+}
+.gallery-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--dark-accent), var(--primary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gallery-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.gallery-tabs .tab {
+  padding: 12px 32px;
+  border: 2px solid var(--primary-color);
+  background: #fff;
+  color: var(--primary-color);
+  font-weight: 600;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.gallery-tabs .tab.active {
+  background: var(--primary-color);
+  color: #fff;
+}
+.gallery-content .tab-content {
+  display: none;
+  min-height: 120px;
+  font-size: 1.13rem;
+}
+.gallery-content .tab-content.active {
+  display: block;
+}
