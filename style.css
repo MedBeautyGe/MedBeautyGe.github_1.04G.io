@@ -13,24 +13,28 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth; /* For smooth scrolling to anchors */
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   background: var(--white-color);
   color: var(--text-color);
   position: relative;
-  overflow-x: hidden; /* Предотвращает горизонтальный скролл, если что-то вылезет */
+  overflow-x: hidden; 
 }
 
 body.menu-open {
-  overflow-y: hidden; /* Блокирует скролл основной страницы при открытом меню */
+  overflow-y: hidden; 
 }
 body.menu-open::after {
   content: '';
   position: fixed;
   left: 0; top: 0;
   width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.5); /* Немного темнее для лучшего контраста */
+  background: rgba(0,0,0,0.5); 
   z-index: 998;
   pointer-events: all;
 }
@@ -42,14 +46,14 @@ body.menu-open::after {
 }
 
 .lang-switcher button {
-  padding: 8px 15px; /* Немного компактнее */
-  margin: 0 3px; /* Уменьшил отступ */
+  padding: 8px 15px; 
+  margin: 0 3px; 
   border: 2px solid var(--dark-accent);
   background: var(--white-color);
   cursor: pointer;
   border-radius: 25px;
   font-weight: 600;
-  transition: all 0.3s ease; /* Добавил ease */
+  transition: all 0.3s ease; 
 }
 
 .lang-switcher button.active,
@@ -62,13 +66,13 @@ body.menu-open::after {
 .sticky-nav {
   position: sticky;
   top: 0;
-  z-index: 1000; /* Увеличил z-index на всякий случай */
+  z-index: 1000; 
   background: var(--white-color);
   box-shadow: 0 2px 8px rgba(11, 74, 74, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 5%; /* Немного уменьшил вертикальный padding */
+  padding: 0.8rem 5%; 
   flex-wrap: wrap;
 }
 
@@ -76,19 +80,19 @@ body.menu-open::after {
   display: none;
   background: none;
   border: none;
-  font-size: 28px; /* Немного увеличил для лучшей кликабельности */
+  font-size: 28px; 
   cursor: pointer;
   color: var(--dark-accent);
-  z-index: 1002; /* Выше чем nav-list */
-  padding: 5px; /* Добавил padding для увеличения области клика */
+  z-index: 1002; 
+  padding: 5px; 
 }
 
 .burger-icon, .close-icon {
-  font-size: 30px; /* Уменьшил, чтобы соответствовать кнопке */
+  font-size: 30px; 
   line-height: 1;
   pointer-events: none;
   user-select: none;
-  display: inline-block; /* Для корректного отображения */
+  display: inline-block; 
 }
 
 .logo {
@@ -99,8 +103,7 @@ body.menu-open::after {
 }
 .logo:hover,
 .logo:focus {
-  transform: scale(2.0); /* <<< ИЗМЕНЕНО ЗДЕСЬ: увеличение в два раза. Ранее было scale(1.1) */
-                          /* Рекомендуется использовать более умеренное значение, например 1.1 или 1.15 */
+  transform: scale(1.1); 
 }
 
 .slogan {
@@ -149,6 +152,59 @@ body.menu-open::after {
 .nav-list a:focus::after,
 .nav-list a.active-link::after {
   width: 100%;
+}
+
+/* Navigation Dropdown */
+.nav-list .dropdown-li {
+  position: relative;
+}
+
+.nav-list .dropdown-toggle::after {
+  content: ' \25BC'; /* Down arrow unicode */
+  font-size: 0.7em;
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 0.2s ease-in-out;
+}
+.nav-list .dropdown-li .dropdown-toggle.open::after {
+   transform: rotate(180deg); /* Rotates to up arrow */
+}
+
+.nav-list .dropdown-menu {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%; /* Position below the parent */
+  left: 0;
+  background-color: var(--white-color);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 0.5rem 0;
+  z-index: 1005; 
+  min-width: 240px; /* Adjust as needed */
+  border-radius: 0 0 8px 8px;
+  border: 1px solid var(--border-color);
+  border-top: none;
+}
+
+.nav-list .dropdown-menu.show {
+  display: block; /* Show when .show class is added by JS */
+}
+
+.nav-list .dropdown-menu li a {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  color: var(--text-color);
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 0.9rem; /* Slightly smaller */
+}
+.nav-list .dropdown-menu li a:hover,
+.nav-list .dropdown-menu li a:focus {
+  background-color: var(--light-bg);
+  color: var(--primary-color);
+}
+.nav-list .dropdown-menu li a::after { /* Remove underline from main nav style for dropdown items */
+    display: none;
 }
 
 
@@ -495,8 +551,8 @@ section h2 {
     max-width: 300px; 
     height: 100vh; 
     flex-direction: column;
-    gap: 0.5rem; 
-    padding: 5rem 2rem 2rem; 
+    gap: 0; 
+    padding: 5rem 0 2rem; 
     background: var(--white-color);
     z-index: 1001;
     box-shadow: 5px 0 15px rgba(11, 74, 74, 0.15);
@@ -505,18 +561,45 @@ section h2 {
   .nav-list.active {
     display: flex;
   }
-  .nav-list a {
+  .nav-list > li > a { 
     font-size: 1.1rem; 
-    padding: 10px 0;
+    padding: 12px 2rem; 
     display: block; 
     border-bottom: 1px solid #f0f0f0;
   }
-  .nav-list a::after {
+  .nav-list > li > a::after { 
       display: none; 
   }
-  .nav-list li:last-child a {
+  .nav-list > li:last-child > a { 
       border-bottom: none;
   }
+
+  .nav-list .dropdown-menu { 
+    position: static; 
+    box-shadow: none;
+    border: none;
+    border-top: 1px solid #e8e8e8; 
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+    padding: 0; 
+    background-color: #fdfdfd; 
+  }
+  .nav-list .dropdown-menu li a {
+    padding: 10px 2rem 10px 3rem; 
+    font-size: 1rem; 
+    border-bottom: 1px solid #f5f5f5;
+    display: block;
+    white-space: normal; 
+  }
+   .nav-list .dropdown-menu li:last-child a {
+      border-bottom: none;
+  }
+  .nav-list .dropdown-toggle::after { 
+    float: right; 
+    margin-right: 5px;
+  }
+
 
   .logo {
     max-width: 150px; 
@@ -623,13 +706,15 @@ section h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
   .logo:hover,
   .logo:focus,
@@ -707,6 +792,21 @@ section h2 {
 }
 .mission-text div[data-translate="mission"] {
     margin-top: 1rem; 
+}
+.read-more-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+}
+.read-more-btn:hover {
+    background-color: var(--dark-accent);
 }
 
 .mission-separator {
@@ -824,4 +924,180 @@ section h2 {
 }
 .gallery-content .tab-content.active {
   display: block;
+}
+
+/* Prices Section (Main Page - Short Version) */
+.prices-section {
+  background: var(--white-color); 
+}
+
+#prices h2 { /* Заголовок секции Прайс-лист */
+  margin-bottom: 1.5rem; /* Уменьшенный отступ снизу для краткой версии */
+}
+
+.prices-intro-text {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem auto; /* Центрирование и отступ снизу */
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+.prices-intro-text p {
+  margin-bottom: 1.5rem;
+}
+
+.prices-cta-btn { /* Стили для кнопки "Посмотреть детальный прайс" */
+  margin-top: 1rem; /* Отступ сверху для кнопки */
+  padding: 12px 30px; /* Размеры кнопки можно подстроить */
+  /* Использует стили .cta-btn, но можно переопределить при необходимости */
+}
+
+.price-disclaimer { /* Дисклеймер под кнопкой */
+  margin-top: 1.5rem; /* Уменьшил отступ, так как полный прайс уехал */
+  padding: 1rem 1.5rem;
+  background-color: #fffcf0; 
+  border: 1px solid #f0e6d2;
+  border-left: 5px solid #e6c37f; 
+  color: #5c4d30;
+  font-size: 0.95rem;
+  text-align: center;
+  border-radius: 5px;
+  line-height: 1.7;
+}
+
+
+/* Styles for prices-details.html (if you want to keep them separate, otherwise they are general) */
+/* These styles would apply if you create a separate prices-details.css or keep them here */
+.price-category { /* This style will be used on prices-details.html */
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background-color: var(--light-bg); 
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.price-category:last-of-type {
+    margin-bottom: 1.5rem; 
+}
+
+.price-category h3 {
+  font-size: 1.6rem;
+  color: var(--dark-accent);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  display: block; 
+}
+
+.price-category table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.price-category th, .price-category td {
+  border: 1px solid var(--border-color);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.price-category th {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-weight: 600;
+}
+.price-category th:last-child, 
+.price-category td:last-child {
+    text-align: right;
+    width: 30%; 
+}
+
+.price-category tr:nth-child(even) td {
+  background-color: #fdfdfd; 
+}
+.price-category tr:nth-child(odd) td {
+  background-color: var(--white-color); 
+}
+
+.price-category td:first-child {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.price-category td:last-child {
+  color: var(--dark-accent);
+  font-weight: 600;
+}
+.price-category td span[data-translate] { 
+    font-size: 0.85em;
+    font-weight: normal;
+    color: #555;
+}
+
+/* Responsive tables for prices (will apply on prices-details.html) */
+@media (max-width: 768px) {
+    /* Main page price section adjustments */
+    .prices-intro-text {
+      font-size: 1rem;
+    }
+    #prices h2 { /* Заголовок секции на главной */
+      margin-bottom: 1rem;
+    }
+    .price-disclaimer { /* Дисклеймер на главной */
+        font-size: 0.9rem;
+    }
+
+
+    /* Detailed Price Page Table Adjustments */
+    .price-category table thead { /* На prices-details.html */
+        display: none; 
+    }
+    .price-category table, 
+    .price-category table tbody, 
+    .price-category table tr, 
+    .price-category table td { /* На prices-details.html */
+        display: block;
+        width: 100% !important; 
+    }
+    .price-category table tr { /* На prices-details.html */
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        overflow: hidden; 
+    }
+    .price-category table td { /* На prices-details.html */
+        text-align: right; 
+        padding-left: 50%; 
+        position: relative;
+        border-bottom: 1px solid #eee;
+    }
+    .price-category table td:last-child { /* На prices-details.html */
+        border-bottom: none;
+    }
+    .price-category table td::before { /* На prices-details.html */
+        content: ""; 
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px); 
+        padding-right: 10px;
+        white-space: normal; 
+        text-align: left;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    .price-category table td:first-child::before { /* На prices-details.html */
+        content: var(--mobile-table-procedure-label, "Procedure:"); 
+    }
+    .price-category table td:last-child::before { /* На prices-details.html */
+        content: var(--mobile-table-price-label, "Price:"); 
+    }
+    html[lang="ru"] .price-category table td:first-child::before { --mobile-table-procedure-label: "Процедура:"; }
+    html[lang="ru"] .price-category table td:last-child::before {  --mobile-table-price-label: "Цена:"; }
+    html[lang="de"] .price-category table td:first-child::before { --mobile-table-procedure-label: "Verfahren:"; }
+    html[lang="de"] .price-category table td:last-child::before {  --mobile-table-price-label: "Preis:"; }
 }

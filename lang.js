@@ -18,7 +18,6 @@ const translations = {
     rhinoDesc: "Медицина Европейского уровня",
     care: "Реабилитация",
     careDesc: "Послеоперационный уход и поддержка",
-    // Блок "Как мы работаем"
     stepConsult: "Бесплатная консультация",
     stepDocs: "Сбор и перевод меддокументов",
     stepClinic: "Подбор и согласование клиники/врача",
@@ -32,12 +31,10 @@ const translations = {
     conciergeEscort: "Сопровождение и перевод на всех этапах",
     conciergeExcursions: "Бронирование экскурсий и досуга",
     conciergeHousehold: "Решение бытовых и административных вопросов",
-    // Галерея
     galleryProcedures: "Процедуры",
     galleryTourism: "Грузия для туриста",
     galleryProceduresSoon: "Скоро здесь появятся фотографии наших процедур, специалистов и клиник.",
     galleryTourismSoon: "Скоро здесь появятся лучшие виды и достопримечательности Грузии.",
-    // Контакты и остальное
     contactUs: "Свяжитесь с нами",
     orMessageUs: "Или напишите нам в мессенджер:",
     namePlaceholder: "Имя",
@@ -66,7 +63,103 @@ const translations = {
 Для нас работа — это не просто турбизнес. Мы хотим, чтобы каждый гость получил не только выгодные и качественные услуги, но уезжал в свою страну, как зернышко граната, — был наполнен солнцем Грузии и теплом людей, которые здесь живут и работают.<br>
 Потому что это — Грузия, а Гость в Грузии — это подарок от Бога!`,
     readMoreAbout: "Читать полностью",
-    readLessAbout: "Скрыть"
+    readLessAbout: "Скрыть",
+
+    // Prices Navigation and Section Titles
+    pricesNav: "Цены",
+    pricesTitle: "Прайс-лист",
+    pricesIntroText: "Мы предлагаем широкий спектр медицинских и косметологических услуг по конкурентоспособным ценам. Ознакомьтесь с нашим ориентировочным прайс-листом для получения более подробной информации.",
+    viewDetailedPrices: "Посмотреть детальный прайс-лист",
+    procedureName: "Название процедуры",
+    procedurePrice: "Цена (ориентировочно)",
+    priceDisclaimer: "Прайс приведен ориентировочный, не является публичной офертой, точный расчет стоимости операций и процедур будет вам выслан после онлайн консультации с врачом.",
+    perSession: "за сеанс",
+    withoutCrown: "без коронки",
+
+    // Price Categories (for navigation and section headings)
+    pricesPlasticSurgery: "ПЛАСТИЧЕСКАЯ ХИРУРГИЯ",
+    pricesBariatricSurgery: "БАРИАТРИЧЕСКАЯ ХИРУРГИЯ",
+    pricesMammology: "МАММОЛОГИЯ",
+    pricesPhlebology: "ФЛЕБОЛОГИЯ",
+    pricesAestheticGynecology: "ЭСТЕТИЧЕСКАЯ ГИНЕКОЛОГИЯ",
+    pricesAestheticUrology: "ЭСТЕТИЧЕСКАЯ УРОЛОГИЯ",
+    pricesCosmetology: "КОСМЕТОЛОГИЯ",
+    pricesTrichology: "ТРИХОЛОГИЯ",
+    pricesOphthalmology: "ОФТАЛЬМОЛОГИЯ",
+    pricesDentistry: "СТОМАТОЛОГИЯ",
+
+    // Plastic Surgery Procedures
+    psRhinoplastyPrimary: "Ринопластика (первичная)",
+    psRhinoplastySecondary: "Ринопластика (вторичная)",
+    psSeptoplasty: "Септопластика",
+    psRhinoseptoplasty: "Риносептопластика",
+    psUpperBleph: "Блефаропластика верхних век",
+    psLowerBleph: "Блефаропластика нижних век",
+    psCircularBleph: "Круговая блефаропластика",
+    psEndoLift: "Эндоскопический лифтинг лба и бровей",
+    psFacelift: "Фейслифтинг (SMAS-лифтинг)",
+    psPlatysmaplasty: "Платизмопластика (лифтинг шеи)",
+    psChinLipo: "Липосакция подбородка",
+    psOtoplasty: "Отопластика (коррекция ушей)",
+    psBreastAug: "Увеличение груди имплантами",
+    psBreastLift: "Подтяжка груди (мастопексия)",
+    psBreastRed: "Уменьшение груди (редукционная маммопластика)",
+    psAbdomino: "Абдоминопластика (пластика живота)",
+    psLipo1Zone: "Липосакция (1 зона)",
+    psLipofill1Zone: "Липофилинг (1 зона)",
+    psBrachio: "Брахиопластика (пластика рук)",
+    psThighLift: "Подтяжка бедер",
+    psLabiaPlastic: "Интимная пластика (лабиопластика)",
+
+    // Bariatric Surgery Procedures
+    bsSleeve: "Резекция желудка (Sleeve gastrectomy)",
+    bsBypass: "Желудочное шунтирование (Gastric bypass)",
+    bsBalloon: "Установка внутрижелудочного баллона",
+
+    // Mammology Procedures
+    mConsultUzi: "Консультация маммолога + УЗИ",
+    mMammo: "Маммография",
+    mBiopsy: "Биопсия молочной железы",
+
+    // Phlebology Procedures
+    pConsultDoppler: "Консультация флеболога + УЗДГ вен",
+    pEvlt: "ЭВЛК (эндовенозная лазерная коагуляция) 1 нога",
+    pSclero: "Склеротерапия", 
+
+    // Aesthetic Gynecology Procedures
+    agLabia: "Лабиопластика",
+    agHymeno: "Гименопластика",
+    agLaserRejuv: "Интимное омоложение лазером",
+
+    // Aesthetic Urology Procedures
+    auCircum: "Обрезание (циркумцизия)",
+    auFrenulo: "Пластика уздечки полового члена",
+
+    // Cosmetology Procedures
+    cConsult: "Консультация косметолога",
+    cFacialClean: "Чистка лица",
+    cMesoFace: "Мезотерапия (лицо)",
+    cBioRevFace: "Биоревитализация (лицо)",
+    cBotox1Zone: "Ботулинотерапия (1 зона)",
+    cFillers1ml: "Контурная пластика филлерами (1 мл)",
+    cPeels: "Пилинги",
+
+    // Trichology Procedures
+    tConsultTricho: "Консультация трихолога + трихоскопия",
+    tMesoScalp: "Мезотерапия кожи головы",
+    tPrpScalp: "Плазмолифтинг кожи головы",
+
+    // Ophthalmology Procedures
+    oLasikFemto: "Лазерная коррекция зрения (LASIK/FEMTO LASIK) за 1 глаз",
+    oCataractIol: "Удаление катаракты с имплантацией ИОЛ (1 глаз)",
+
+    // Dentistry Procedures
+    dHygiene: "Профессиональная гигиена полости рта",
+    dWhitening: "Отбеливание зубов",
+    dImplant: "Установка импланта (1 ед.)",
+    dMetaCerCrown: "Металлокерамическая коронка",
+    dZircCrown: "Циркониевая коронка",
+    dVeneers: "Виниры (1 ед.)",
   },
   en: {
     home: "Home",
@@ -132,7 +225,103 @@ Because you are going to Georgia!<br>
 For us, work is not just a tourism business. We want every guest not only to receive favorable and high-quality services, but to leave Georgia filled with its sun and the warmth of its people.<br>
 Because this is Georgia, and a guest in Georgia is a gift from God!`,
     readMoreAbout: "Read More",
-    readLessAbout: "Read Less"
+    readLessAbout: "Read Less",
+
+    // Prices Navigation and Section Titles
+    pricesNav: "Prices",
+    pricesTitle: "Price List",
+    pricesIntroText: "We offer a wide range of medical and cosmetology services at competitive prices. Check out our indicative price list for more detailed information.",
+    viewDetailedPrices: "View Detailed Price List",
+    procedureName: "Procedure Name",
+    procedurePrice: "Approx. Price",
+    priceDisclaimer: "The price list is indicative and does not constitute a public offer. The exact cost of operations and procedures will be sent to you after an online consultation with a doctor.",
+    perSession: "per session",
+    withoutCrown: "without crown",
+
+    // Price Categories (for navigation and section headings)
+    pricesPlasticSurgery: "PLASTIC SURGERY",
+    pricesBariatricSurgery: "BARIATRIC SURGERY",
+    pricesMammology: "MAMMOLOGY",
+    pricesPhlebology: "PHLEBOLOGY",
+    pricesAestheticGynecology: "AESTHETIC GYNECOLOGY",
+    pricesAestheticUrology: "AESTHETIC UROLOGY",
+    pricesCosmetology: "COSMETOLOGY",
+    pricesTrichology: "TRICHOLOGY",
+    pricesOphthalmology: "OPHTHALMOLOGY",
+    pricesDentistry: "DENTISTRY",
+
+    // Plastic Surgery Procedures
+    psRhinoplastyPrimary: "Rhinoplasty (primary)",
+    psRhinoplastySecondary: "Rhinoplasty (secondary)",
+    psSeptoplasty: "Septoplasty",
+    psRhinoseptoplasty: "Rhinoseptoplasty",
+    psUpperBleph: "Upper Blepharoplasty",
+    psLowerBleph: "Lower Blepharoplasty",
+    psCircularBleph: "Circular Blepharoplasty",
+    psEndoLift: "Endoscopic Forehead and Brow Lift",
+    psFacelift: "Facelift (SMAS lift)",
+    psPlatysmaplasty: "Platysmaplasty (neck lift)",
+    psChinLipo: "Chin Liposuction",
+    psOtoplasty: "Otoplasty (ear correction)",
+    psBreastAug: "Breast Augmentation with Implants",
+    psBreastLift: "Breast Lift (mastopexy)",
+    psBreastRed: "Breast Reduction (reduction mammoplasty)",
+    psAbdomino: "Abdominoplasty (tummy tuck)",
+    psLipo1Zone: "Liposuction (1 zone)",
+    psLipofill1Zone: "Lipofilling (1 zone)",
+    psBrachio: "Brachioplasty (arm lift)",
+    psThighLift: "Thigh Lift",
+    psLabiaPlastic: "Intimate Plastic Surgery (labiaplasty)",
+
+    // Bariatric Surgery Procedures
+    bsSleeve: "Sleeve Gastrectomy",
+    bsBypass: "Gastric Bypass",
+    bsBalloon: "Intragastric Balloon Placement",
+
+    // Mammology Procedures
+    mConsultUzi: "Mammologist Consultation + Ultrasound",
+    mMammo: "Mammography",
+    mBiopsy: "Breast Biopsy",
+
+    // Phlebology Procedures
+    pConsultDoppler: "Phlebologist Consultation + Doppler Ultrasound",
+    pEvlt: "EVLT (endovenous laser coagulation) 1 leg",
+    pSclero: "Sclerotherapy",
+
+    // Aesthetic Gynecology Procedures
+    agLabia: "Labiaplasty",
+    agHymeno: "Hymenoplasty",
+    agLaserRejuv: "Laser Intimate Rejuvenation",
+
+    // Aesthetic Urology Procedures
+    auCircum: "Circumcision",
+    auFrenulo: "Frenuloplasty",
+
+    // Cosmetology Procedures
+    cConsult: "Cosmetologist Consultation",
+    cFacialClean: "Facial Cleansing",
+    cMesoFace: "Mesotherapy (face)",
+    cBioRevFace: "Biorevitalization (face)",
+    cBotox1Zone: "Botulinum Toxin Therapy (1 zone)",
+    cFillers1ml: "Dermal Fillers (1 ml)",
+    cPeels: "Peels",
+
+    // Trichology Procedures
+    tConsultTricho: "Trichologist Consultation + Trichoscopy",
+    tMesoScalp: "Scalp Mesotherapy",
+    tPrpScalp: "Scalp PRP Therapy",
+
+    // Ophthalmology Procedures
+    oLasikFemto: "Laser Vision Correction (LASIK/FEMTO LASIK) per eye",
+    oCataractIol: "Cataract Removal with IOL Implantation (1 eye)",
+
+    // Dentistry Procedures
+    dHygiene: "Professional Oral Hygiene",
+    dWhitening: "Teeth Whitening",
+    dImplant: "Dental Implant (1 unit)",
+    dMetaCerCrown: "Metal-Ceramic Crown",
+    dZircCrown: "Zirconia Crown",
+    dVeneers: "Veneers (1 unit)",
   },
   de: {
     home: "Startseite",
@@ -198,7 +387,103 @@ Sie reisen nach Georgien!<br>
 Für uns ist es nicht nur Tourismus. Wir möchten, dass jeder Gast nicht nur hochwertige und günstige Leistungen erhält, sondern mit Sonne und Wärme Georgiens abreist.<br>
 Denn das ist Georgien, und der Gast in Georgien ist ein Geschenk Gottes!`,
     readMoreAbout: "Mehr lesen",
-    readLessAbout: "Weniger anzeigen"
+    readLessAbout: "Weniger anzeigen",
+
+    // Prices Navigation and Section Titles
+    pricesNav: "Preise",
+    pricesTitle: "Preisliste",
+    pricesIntroText: "Wir bieten eine breite Palette von medizinischen und kosmetologischen Dienstleistungen zu wettbewerbsfähigen Preisen an. Sehen Sie sich unsere Richtpreisliste für detailliertere Informationen an.",
+    viewDetailedPrices: "Detaillierte Preisliste ansehen",
+    procedureName: "Verfahrensname",
+    procedurePrice: "Ca. Preis",
+    priceDisclaimer: "Die Preisliste ist Richtwert und stellt kein öffentliches Angebot dar. Die genauen Kosten für Operationen und Eingriffe werden Ihnen nach einer Online-Konsultation mit einem Arzt zugesandt.",
+    perSession: "pro Sitzung",
+    withoutCrown: "ohne Krone",
+
+    // Price Categories (for navigation and section headings)
+    pricesPlasticSurgery: "PLASTISCHE CHIRURGIE",
+    pricesBariatricSurgery: "BARIATRISCHE CHIRURGIE",
+    pricesMammology: "MAMMOLOGIE",
+    pricesPhlebology: "PHLEBOLOGIE",
+    pricesAestheticGynecology: "ÄSTHETISCHE GYNÄKOLOGIE",
+    pricesAestheticUrology: "ÄSTHETISCHE UROLOGIE",
+    pricesCosmetology: "KOSMETOLOGIE",
+    pricesTrichology: "TRICHOLOGIE",
+    pricesOphthalmology: "AUGENHEILKUNDE",
+    pricesDentistry: "ZAHNMEDIZIN",
+
+    // Plastic Surgery Procedures
+    psRhinoplastyPrimary: "Rhinoplastik (primär)",
+    psRhinoplastySecondary: "Rhinoplastik (sekundär)",
+    psSeptoplasty: "Septumplastik",
+    psRhinoseptoplasty: "Rhinoseptumplastik",
+    psUpperBleph: "Oberlidstraffung",
+    psLowerBleph: "Unterlidstraffung",
+    psCircularBleph: "Zirkuläre Blepharoplastik",
+    psEndoLift: "Endoskopisches Stirn- und Augenbrauenlifting",
+    psFacelift: "Facelifting (SMAS-Lifting)",
+    psPlatysmaplasty: "Platysmaplastik (Halsstraffung)",
+    psChinLipo: "Kinnabsaugung",
+    psOtoplasty: "Otoplastik (Ohrenkorrektur)",
+    psBreastAug: "Brustvergrößerung mit Implantaten",
+    psBreastLift: "Bruststraffung (Mastopexie)",
+    psBreastRed: "Brustverkleinerung (Reduktionsmammoplastik)",
+    psAbdomino: "Abdominoplastik (Bauchdeckenstraffung)",
+    psLipo1Zone: "Liposuktion (1 Zone)",
+    psLipofill1Zone: "Lipofilling (1 Zone)",
+    psBrachio: "Brachioplastik (Armstraffung)",
+    psThighLift: "Oberschenkelstraffung",
+    psLabiaPlastic: "Intimchirurgie (Labiaplastik)",
+
+    // Bariatric Surgery Procedures
+    bsSleeve: "Schlauchmagen (Sleeve-Gastrektomie)",
+    bsBypass: "Magenbypass",
+    bsBalloon: "Magenballon-Platzierung",
+
+    // Mammology Procedures
+    mConsultUzi: "Mammologen-Beratung + Ultraschall",
+    mMammo: "Mammographie",
+    mBiopsy: "Brustbiopsie",
+
+    // Phlebology Procedures
+    pConsultDoppler: "Phlebologen-Beratung + Doppler-Ultraschall",
+    pEvlt: "EVLT (endovenöse Laserkoagulation) 1 Bein",
+    pSclero: "Sklerotherapie",
+
+    // Aesthetic Gynecology Procedures
+    agLabia: "Labiaplastik",
+    agHymeno: "Hymenoplastik",
+    agLaserRejuv: "Laser-Intimverjüngung",
+
+    // Aesthetic Urology Procedures
+    auCircum: "Zirkumzision (Beschneidung)",
+    auFrenulo: "Frenuloplastik",
+
+    // Cosmetology Procedures
+    cConsult: "Kosmetologen-Beratung",
+    cFacialClean: "Gesichtsreinigung",
+    cMesoFace: "Mesotherapie (Gesicht)",
+    cBioRevFace: "Biorevitalisierung (Gesicht)",
+    cBotox1Zone: "Botulinumtoxin-Therapie (1 Zone)",
+    cFillers1ml: "Dermalfiller (1 ml)",
+    cPeels: "Peelings",
+
+    // Trichology Procedures
+    tConsultTricho: "Trichologen-Beratung + Trichoskopie",
+    tMesoScalp: "Mesotherapie der Kopfhaut",
+    tPrpScalp: "PRP-Therapie der Kopfhaut",
+
+    // Ophthalmology Procedures
+    oLasikFemto: "Laser-Augenkorrektur (LASIK/FEMTO LASIK) pro Auge",
+    oCataractIol: "Kataraktentfernung mit IOL-Implantation (1 Auge)",
+
+    // Dentistry Procedures
+    dHygiene: "Professionelle Mundhygiene",
+    dWhitening: "Zahnaufhellung",
+    dImplant: "Zahnimplantat (1 Einheit)",
+    dMetaCerCrown: "Metallkeramikkrone",
+    dZircCrown: "Zirkonkrone",
+    dVeneers: "Veneers (1 Einheit)",
   }
 };
 
@@ -209,7 +494,6 @@ function applyTranslations(lang) {
 
     document.querySelectorAll('.lang-switcher button').forEach(btn => {
         btn.classList.remove('active');
-        // Check aria-label for languages like Русский, English, Deutsch or textContent for RU, EN, DE
         if ( (lang === 'ru' && btn.textContent === 'RU') ||
              (lang === 'en' && btn.textContent === 'EN') ||
              (lang === 'de' && btn.textContent === 'DE') ) {
@@ -230,27 +514,18 @@ function applyTranslations(lang) {
         if (translation !== undefined) {
             if (element.tagName === 'INPUT' && element.type !== 'submit' && element.type !== 'button') {
                 element.placeholder = translation;
-                // Also update sr-only label associated with this input if its data-translate matches
                 const label = document.querySelector(`label.sr-only[for="${element.id}"][data-translate="${key}"]`);
-                if (label) {
-                    // label.textContent = translation; // Not needed as placeholder covers visible text, sr-only is for screen readers
-                }
+                if (label) { /* label.textContent = translation; // Not strictly needed if placeholder is primary visual */ }
             } else if (element.tagName === 'TEXTAREA') {
                 element.placeholder = translation;
                  const label = document.querySelector(`label.sr-only[for="${element.id}"][data-translate="${key}"]`);
-                if (label) {
-                    // label.textContent = translation;
-                }
+                if (label) { /* label.textContent = translation; */ }
             } else if (element.tagName === 'BUTTON' && element.classList.contains('submit-btn')) {
-                // For submit button, update both innerHTML and aria-label
-                element.innerHTML = translation.replace(/<span class="spinner"><\/span> /g, ''); // Remove spinner if present from translation string
-                element.setAttribute('aria-label', translation.replace(/<[^>]*>/g, '')); // Remove HTML for aria-label
+                element.innerHTML = translation.replace(/<span class="spinner"><\/span> /g, ''); 
+                element.setAttribute('aria-label', translation.replace(/<[^>]*>/g, '')); 
             } else if (element.classList.contains('sr-only') && element.tagName === 'LABEL') {
-                // For sr-only labels, we generally want them to match placeholder text for screen readers
-                // The placeholder itself will be translated. We could update textContent if it's purely for screen readers and has no visible counterpart.
-                // element.textContent = translation; // This might be redundant if the input's placeholder is already translated
-            }
-             else { // This will also handle .read-more-btn and other elements
+                 // element.textContent = translation; 
+            } else { 
                 element.innerHTML = translation;
             }
         } else {
@@ -264,10 +539,9 @@ function changeLanguage(lang) {
   localStorage.setItem('lang', lang);
   applyTranslations(lang);
   
-  // Explicitly update the read-more button text if it exists
   const readMoreBtn = document.querySelector('.read-more-btn');
   if (readMoreBtn) {
-    const currentKey = readMoreBtn.getAttribute('data-translate');
+    const currentKey = readMoreBtn.getAttribute('data-translate'); 
     if (translations[lang] && translations[lang][currentKey]) {
         readMoreBtn.textContent = translations[lang][currentKey];
     }
@@ -275,7 +549,7 @@ function changeLanguage(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const savedLang = localStorage.getItem('lang') || 'ru'; // Default to 'ru'
+  const savedLang = localStorage.getItem('lang') || 'ru'; 
   applyTranslations(savedLang);
 
   if (typeof AOS !== "undefined") {
