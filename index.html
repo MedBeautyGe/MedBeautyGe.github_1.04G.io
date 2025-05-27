@@ -40,9 +40,24 @@
       <li><a href="#home" data-translate="home"></a></li>
       <li><a href="#about" data-translate="about"></a></li>
       <li><a href="#services" data-translate="services"></a></li>
-      <!-- ЗДЕСЬ изменённый пункт меню "Цены" — ТОЛЬКО ССЫЛКА, без dropdown! -->
-      <li>
-        <a href="#prices" data-translate="pricesNav"></a>
+      <li class="dropdown-li">
+        <a href="#prices" data-translate="pricesNav" class="dropdown-toggle"></a>
+        <ul class="dropdown-menu">
+          <li><a href="prices-details.html#prices-mammoplasty" data-translate="cat_mammoplasty_nav"></a></li>
+          <li><a href="prices-details.html#prices-legs-hips-buttocks" data-translate="cat_legs_hips_buttocks_nav"></a></li>
+          <li><a href="prices-details.html#prices-arms-surgery" data-translate="cat_arms_surgery_nav"></a></li>
+          <li><a href="prices-details.html#prices-body-surgery" data-translate="cat_body_surgery_nav"></a></li>
+          <li><a href="prices-details.html#prices-lipofilling-ps" data-translate="cat_lipofilling_ps_nav"></a></li>
+          <li><a href="prices-details.html#prices-aesthetic-gynecology" data-translate="cat_aesthetic_gynecology_nav"></a></li>
+          <li><a href="prices-details.html#prices-face-neck-surgery" data-translate="cat_face_neck_surgery_nav"></a></li>
+          <li><a href="prices-details.html#prices-check-up" data-translate="cat_check_up_nav"></a></li>
+          <li><a href="prices-details.html#prices-cosmetology" data-translate="cat_cosmetology_nav"></a></li>
+          <li><a href="prices-details.html#prices-dentistry-implants-veneers" data-translate="cat_dentistry_implants_veneers_nav"></a></li>
+          <li><a href="prices-details.html#prices-hair-transplant" data-translate="cat_hair_transplant_nav"></a></li>
+          <li><a href="prices-details.html#prices-lab-tests" data-translate="cat_lab_tests_nav"></a></li>
+          <li><a href="prices-details.html#prices-diagnostics" data-translate="cat_diagnostics_nav"></a></li>
+          <li><a href="prices-details.html#prices-med-insurance-nonresident" data-translate="cat_med_insurance_nonresident_nav"></a></li>
+        </ul>
       </li>
       <li><a href="#howwework" data-translate="howWeWork"></a></li>
       <li><a href="#gallery" data-translate="gallery"></a></li>
@@ -71,7 +86,6 @@
       <hr class="mission-separator">
       <button class="read-more-btn" data-translate="readMoreAbout" aria-expanded="false" aria-controls="missionFullText"></button>
       <div id="missionFullText" class="mission-full-text" data-translate="mission" style="display: none;">
-          <!-- The content for data-translate="mission" will be populated here by lang.js -->
       </div>
     </div>
   </section>
@@ -145,9 +159,9 @@
     <p class="price-disclaimer" data-translate="priceDisclaimer"></p>
   </section>
 
+
   <section id="reviews" class="reviews-section" data-aos="fade-up">
     <h2 data-translate="reviews"></h2>
-    <!-- Сюда будут добавляться отзывы -->
   </section>
 
   <section id="contact" class="contact" data-aos="fade-up">
@@ -205,11 +219,10 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({
-      duration: 800,
-      once: true
+      duration: 800, 
+      once: true 
     });
 
-    // Мобильное меню
     const menuToggle = document.querySelector('.menu-toggle');
     const navList = document.querySelector('.nav-list');
     const burgerIcon = document.querySelector('.burger-icon');
@@ -217,7 +230,7 @@
 
     menuToggle.addEventListener('click', function(e) {
       navList.classList.toggle('active');
-      document.body.classList.toggle('menu-open');
+      document.body.classList.toggle('menu-open'); 
       const isActive = navList.classList.contains('active');
       menuToggle.setAttribute('aria-expanded', isActive);
       burgerIcon.style.display = isActive ? 'none' : '';
@@ -226,10 +239,13 @@
         navList.classList.add('slide-in');
       } else {
         navList.classList.remove('slide-in');
+        document.querySelectorAll('.nav-list .dropdown-menu.show').forEach(menu => {
+            menu.classList.remove('show');
+            menu.closest('.dropdown-li').querySelector('.dropdown-toggle').classList.remove('open');
+        });
       }
     });
 
-    // Закрытие меню при клике вне его или на ссылку
     function closeMenu() {
       if (navList.classList.contains('active')) {
         navList.classList.remove('active');
@@ -238,6 +254,10 @@
         menuToggle.setAttribute('aria-expanded', "false");
         burgerIcon.style.display = '';
         closeIcon.style.display = 'none';
+        document.querySelectorAll('.nav-list .dropdown-menu.show').forEach(menu => {
+            menu.classList.remove('show');
+            menu.closest('.dropdown-li').querySelector('.dropdown-toggle').classList.remove('open');
+        });
       }
     }
 
@@ -246,7 +266,16 @@
           !navList.contains(e.target) &&
           e.target !== menuToggle &&
           !menuToggle.contains(e.target)) {
-        closeMenu();
+        let isClickInsideMobileNavDropdown = false;
+        if (e.target.classList.contains('dropdown-toggle') && navList.contains(e.target)) {
+            isClickInsideMobileNavDropdown = true;
+        }
+        if (e.target.closest('.dropdown-menu') && navList.contains(e.target.closest('.dropdown-menu'))) {
+            isClickInsideMobileNavDropdown = true;
+        }
+        if (!isClickInsideMobileNavDropdown) {
+            closeMenu();
+        }
       }
     });
 
@@ -256,7 +285,46 @@
       }
     });
 
-    // Галерея: табы
+    const contactForm = document.getElementById('contact-form');
+    const formLoading = document.getElementById('form-loading');
+    const formSuccess = document.getElementById('form-success');
+    const submitButton = contactForm.querySelector('.submit-btn');
+    const loadingTextElement = document.getElementById('loading-text');
+
+    contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const originalButtonHTML = submitButton.innerHTML;
+        const currentSendingText = loadingTextElement.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = `<span class="spinner"></span> ${currentSendingText}`;
+        formSuccess.style.display = 'none';
+        const formData = new FormData(contactForm);
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+            if (response.ok) {
+                formSuccess.style.display = 'block';
+                contactForm.reset();
+            } else {
+                const data = await response.json();
+                if (Object.hasOwn(data, 'errors')) {
+                    alert(data["errors"].map(error => error["message"]).join(", "));
+                } else {
+                    const errorText = data.error || 'Произошла ошибка при отправке формы.';
+                    alert(errorText);
+                }
+            }
+        } catch (error) {
+            alert('Произошла ошибка при отправке формы. Пожалуйста, проверьте ваше интернет-соединение.');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonHTML;
+        }
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.gallery-tabs .tab').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -271,15 +339,12 @@
         });
       });
 
-      // "Read More" for About Us section
       const readMoreBtn = document.querySelector('.read-more-btn');
       const missionFullText = document.getElementById('missionFullText');
-
       if (readMoreBtn && missionFullText) {
         readMoreBtn.addEventListener('click', function() {
           const isExpanded = missionFullText.style.display !== 'none';
           const currentLang = localStorage.getItem('lang') || 'ru';
-
           if (isExpanded) {
             missionFullText.style.display = 'none';
             this.setAttribute('data-translate', 'readMoreAbout');
@@ -295,6 +360,60 @@
           }
         });
       }
+
+      const navDropdownItems = document.querySelectorAll('.nav-list .dropdown-li');
+      navDropdownItems.forEach(item => {
+          const toggle = item.querySelector('.dropdown-toggle');
+          const menu = item.querySelector('.dropdown-menu');
+          if (toggle && menu) {
+              toggle.addEventListener('click', function(event) {
+                  if (toggle.getAttribute('href') === '#prices' || toggle.getAttribute('href').startsWith('#')) {
+                      event.preventDefault(); 
+                  }
+                  event.stopPropagation(); 
+                  const isMobileMenuOpen = navList.classList.contains('active');
+                  if (!isMobileMenuOpen) {
+                      navDropdownItems.forEach(otherItem => {
+                          if (otherItem !== item) {
+                              otherItem.querySelector('.dropdown-menu')?.classList.remove('show');
+                              otherItem.querySelector('.dropdown-toggle')?.classList.remove('open');
+                          }
+                      });
+                  }
+                  menu.classList.toggle('show');
+                  toggle.classList.toggle('open');
+              });
+          }
+      });
+
+      document.addEventListener('click', function(event) {
+          let clickedInsideADropdownToggleOrMenu = false;
+          navDropdownItems.forEach(item => {
+              if (item.contains(event.target)) {
+                clickedInsideADropdownToggleOrMenu = true;
+              }
+          });
+          if (!clickedInsideADropdownToggleOrMenu && !menuToggle.contains(event.target)) {
+              navDropdownItems.forEach(item => {
+                  item.querySelector('.dropdown-menu')?.classList.remove('show');
+                  item.querySelector('.dropdown-toggle')?.classList.remove('open');
+              });
+          }
+      });
+
+      document.querySelectorAll('.nav-list .dropdown-menu a').forEach(link => {
+          link.addEventListener('click', function() {
+              const parentDropdownMenu = this.closest('.dropdown-menu');
+              if (parentDropdownMenu) {
+                  parentDropdownMenu.classList.remove('show');
+                  const parentToggle = parentDropdownMenu.closest('.dropdown-li')?.querySelector('.dropdown-toggle');
+                  parentToggle?.classList.remove('open');
+              }
+              if (navList.classList.contains('active')) {
+                closeMenu(); 
+              }
+          });
+      });
     });
   </script>
 </body>

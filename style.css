@@ -103,7 +103,7 @@ body.menu-open::after {
 }
 .logo:hover,
 .logo:focus {
-  transform: scale(1.1); 
+  transform: scale(1.6); 
 }
 
 .slogan {
